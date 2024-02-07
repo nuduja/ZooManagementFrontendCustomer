@@ -1,12 +1,11 @@
 // Home.js
 import React from 'react';
-// import { Button } from 'primereact/button';
-// import { Image } from 'primereact/image';
-// import '../styles/home.css';
+import { Button } from 'primereact/button';
+import { Image } from 'primereact/image';
+import '../styles/home.css';
 
 const Home = () => {
   return (
-    <></>
     // <div className="p-d-flex p-flex-column p-jc-center p-ai-center home-container">
     //   <Image src="assets/welcome-image.jpg" alt="Welcome Image" className="welcome-image" />
     //   <h1 className="p-mt-3 zoo-heading">Welcome to Our Zoo</h1>
@@ -35,6 +34,9 @@ const Home = () => {
     //     <Button label="Explore Now" icon="pi pi-arrow-right" className="p-button-raised p-button-rounded p-button-primary zoo-button" />
     //   </div>
     // </div>
+    <>
+    <p>Hello</p>
+    </>
   );
 };
 
