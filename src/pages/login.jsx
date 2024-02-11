@@ -32,8 +32,8 @@ const LoginPage = () => {
       const data = await response.json();
 
       if(data){        
-        localStorage.setItem('loggedUser', true);
-        localStorage.setItem('loggedUserDetails', username);
+        sessionStorage.setItem('loggedUser', true);
+        sessionStorage.setItem('loggedUserDetails', username);
         navigate('www.google.com');
       } else{
         alert('Login failed');
