@@ -2,8 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
 import { Menu } from 'primereact/menu';
 import { Divider } from 'primereact/divider';
+import { Button } from 'primereact/button';
+import { useNavigate } from 'react-router-dom';
+import { deleteUser } from '../hooks/deleteUserHook';
 
 const Profile = () => {
+    let navigate = useNavigate();
     const items = [
         {
             label: 'Profile',
@@ -56,6 +60,12 @@ const Profile = () => {
       fetchData(loggedUsername);
     }, [])
 
+    const handleDelete = async (e) => {
+      e.preventDefault();
+      console.log('delete');
+      deleteUser(userDetails.username);
+    }
+
   return (
     <>
     <div className="flex justify-content-center">
@@ -72,6 +82,8 @@ const Profile = () => {
                 <p>Password: {userDetails.password}</p>
             </div>
       </Card>
+      <Button onClick={() => navigate('/editprofile')}>Edit</Button>
+      <Button onClick={event => handleDelete(event)}>Delete Profile</Button>
       </div>
     </>
   );
