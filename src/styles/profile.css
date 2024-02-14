@@ -1,0 +1,34 @@
+.main-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left-sidebar {
+    width: 200px; /* Adjust as needed */
+    /* Additional styling */
+  }
+  
+  .profile-section {
+    flex-grow: 1;
+    padding: 20px; /* Adjust as needed */
+    /* Additional styling */
+  }
+  
+  .right-sidebar {
+    width: 200px; /* Adjust as needed */
+    /* Additional styling */
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .main-container {
+      flex-direction: column;
+    }
+    .left-sidebar, .right-sidebar {
+      width: 100%;
+    }
+    .profile-section {
+      padding: 10px;
+    }
+  }
+  

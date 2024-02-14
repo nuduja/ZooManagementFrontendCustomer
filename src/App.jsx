@@ -6,6 +6,7 @@ import Login from './pages/login';
 import Signup from './pages/signup';
 import Profile from './components/profile';
 import EditProfile from './components/editProfile';
+import TicketProfile from './components/ticketProfile';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/editprofile" element={<EditProfile />} />
+                <Route path="/ticketprofile" element={<TicketProfile />} />
             </Routes>
         </Router>
     );
