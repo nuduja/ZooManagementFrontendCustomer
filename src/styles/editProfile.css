@@ -1,0 +1,17 @@
+.edit-profile-form form {
+    /* Add your CSS styles here */
+    /* Example styles */
+    margin-top: 20px;
+}
+
+.edit-profile-form .p-field {
+    margin-bottom: 20px;
+}
+
+.edit-profile-form label {
+    font-weight: bold;
+}
+
+.edit-profile-form .p-inputtext-lg {
+    width: 100%;
+}

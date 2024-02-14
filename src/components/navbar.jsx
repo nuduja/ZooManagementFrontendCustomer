@@ -3,7 +3,7 @@ import { Menubar } from 'primereact/menubar';
 import { Badge } from 'primereact/badge';
 import { Link } from 'react-router-dom';
 // import '../styles/navbar.css';
-import 'primeicons/primeicons.css';
+//import 'primeicons/primeicons.css';
 
 export default function TemplateDemo() {
   const itemRenderer = (item) => (
@@ -57,7 +57,7 @@ export default function TemplateDemo() {
   );
 
   return (
-    <div className="card">
+    <div className="card" style={{ width: '100%', position: '', top: 0, zIndex: 1000 , margin: 0 }}>
       <Menubar model={items} start={start} end={end} />
     </div>
   );
