@@ -3,6 +3,7 @@ import { Card } from 'primereact/card';
 import { Menu } from 'primereact/menu';
 import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
+import { Avatar } from 'primereact/avatar'; // Import Avatar component
 import { useNavigate } from 'react-router-dom';
 import { deleteUser } from '../hooks/deleteUserHook';
 import '../styles/profile.css';
@@ -13,8 +14,8 @@ const Profile = () => {
     // Menu items
     const items = [
         { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
-        { label: 'Events', icon: 'pi pi-link', url: '/profile/event' },
-        { label: 'Tickets', icon: 'pi pi-home', url: '/profile/ticket' }
+        { label: 'Booked Events', icon: 'pi pi-link', url: '/profile/event' },
+        { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
     ];
 
     // State for user details
@@ -62,12 +63,6 @@ const Profile = () => {
         navigate('/');
     };
 
-    // Function to handle right sidebar content
-    const handleRightSidebar = (content) => {
-        setShowRightSidebar(true);
-        setRightSidebarContent(content);
-    };
-
     return (
         <div className="main-container">
             <div className="left-sidebar">
@@ -75,7 +70,7 @@ const Profile = () => {
             </div>
             <div className="profile-section">
                 <Divider />
-                <Card title={userDetails.name || 'User Name'} className="profile-card">
+                <Card title={<Avatar label={userDetails.name.charAt(0)} style={{ width: '100px', height: '100px', fontSize: '50px'}} />} className="profile-card"> {/* Avatar component */}
                     {error && <p className="error-message">Error: {error}</p>}
                     <div className="profile-details">
                         <p><span className="profile-label">Name:</span> {userDetails.name}</p>
