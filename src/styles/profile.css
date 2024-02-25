@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   margin: 20px;
-  background: linear-gradient(to bottom, #f7f5f5, #e6e6e6);
+  background: linear-gradient(to bottom, #444141, #e6e6e6);
 }
 
 /* Left sidebar */
@@ -55,7 +55,7 @@
 /* Zoo-themed button styles */
 .p-button {
   margin-bottom: 20px;
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50; 
   color: white;
   font-weight: bold;
   border: none;
@@ -66,5 +66,5 @@
 }
 
 .p-button:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #45a049; 
 }

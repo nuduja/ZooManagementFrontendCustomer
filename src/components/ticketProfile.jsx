@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
+import { Menu } from 'primereact/menu'; // Import Menu component
 import '../styles/ticketProfile.css'; // Import your custom CSS file
 
 const TicketProfile = () => {
@@ -25,8 +26,18 @@ const TicketProfile = () => {
     }
   };
 
+  // Menu items for the left sidebar
+  const items = [
+    { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
+    { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },
+    { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
+  ];
+
   return (
     <div className="ticket-profile-container">
+      <div className="left-sidebar">
+        <Menu model={items} />
+      </div>
       <div className="ticket-section">
         <h3 className="section-title">Local Tickets</h3>
         {localTickets.map(ticket => (

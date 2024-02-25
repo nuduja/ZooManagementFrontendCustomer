@@ -14,7 +14,7 @@ const Profile = () => {
     // Menu items
     const items = [
         { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
-        { label: 'Booked Events', icon: 'pi pi-link', url: '/profile/event' },
+        { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },
         { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
     ];
 

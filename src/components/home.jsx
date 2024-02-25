@@ -38,7 +38,13 @@ const Home = () => {
         <div className={classNames('welcome-section', 'animated-section')}>
           <Card className="welcome-card">
             <h2>Experience the wonders of nature and wildlife at our amazing zoo!</h2>
-            <p>Welcome to [Zoo Name], where adventure awaits at every turn! Immerse yourself in the wonders of the natural world as you explore our diverse collection of wildlife from across the globe. Nestled in the heart of [City or Region], our zoo is a sanctuary for both exotic and indigenous species, offering visitors a unique opportunity to connect with nature and learn about conservation efforts firsthand.</p>
+            <p>Welcome to Safari Adventure Zoo, where the wonders of the wild await your exploration! Situated amidst the lush greenery of our city, our zoo is a haven for both wildlife enthusiasts and curious adventurers.
+
+Step into our world and embark on a thrilling journey through diverse ecosystems, from the dense jungles of the Amazon to the arid deserts of Africa. Encounter a menagerie of exotic animals, from majestic lions and graceful giraffes to colorful tropical birds.
+
+Immerse yourself in interactive exhibits and educational presentations that offer insights into the fascinating lives of our animal residents. Whether you're learning about conservation efforts or getting up close and personal with our animal ambassadors, there's something for everyone to enjoy at Safari Adventure Zoo.
+
+Join us as we celebrate the beauty and diversity of the natural world, and discover the magic of the animal kingdom. Welcome to Safari Adventure Zoo – where every visit promises excitement, wonder, and unforgettable memories!.</p>
           </Card>
         </div>
 

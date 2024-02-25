@@ -8,8 +8,8 @@ import '../styles/about.css';
 
 const About = () => {
   const teamMembers = [
-    { name: 'Nuduja Mapa', position: 'Zoo Director', avatar: 'https://via.placeholder.com/150' },
-    { name: 'Senura Wickmal', position: 'Wildlife Biologist', avatar: 'https://via.placeholder.com/150' },
+    { name: 'Nuduja Mapa', position: 'Zoo Director', avatar: 'https://th.bing.com/th/id/OIP.Rd4WaPYswPlDC33LVNLpsgHaHa?rs=1&pid=ImgDetMain' },
+    { name: 'Senura Wickmal', position: 'Wildlife Biologist', avatar: 'https://media.licdn.com/dms/image/C4D03AQEvdWbmEC-QwA/profile-displayphoto-shrink_800_800/0/1633853536618?e=2147483647&v=beta&t=fqj_BsRspSN7Mpt4ZiN928dJCKAe43koOMoV_iEfH_4' },
     { name: 'Chameesha Ravindu', position: 'Animal Caretaker', avatar: 'https://via.placeholder.com/150' },
     // Add more team members as needed
   ];

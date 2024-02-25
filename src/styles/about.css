@@ -1,37 +1,42 @@
 .about-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .team-container {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Adjust alignment as needed */
-  }
-  
-  .team-member {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    width: calc(33.33% - 20px); /* 3 members per row */
-  }
-  
-  .member-info {
-    margin-left: 20px;
-  }
-  
-  .member-info h3 {
-    margin-bottom: 5px;
-  }
-  
-  .member-info p {
-    color: #666;
-  }
-  
-  .button-container {
-    margin-top: 40px;
-    text-align: center;
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f8f8; /* Set background color */
+  border-radius: 10px; /* Add border radius for rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.team-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Adjust alignment as needed */
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: calc(33.33% - 20px); /* 3 members per row */
+}
+
+.member-info {
+  margin-left: 20px;
+}
+
+.member-info h3 {
+  margin-bottom: 5px;
+}
+
+.member-info p {
+  color: #666;
+}
+
+.button-container {
+  margin-top: 40px;
+  text-align: center;
+}
+.p-card p{
+  color: black;
+}

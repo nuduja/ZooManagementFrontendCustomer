@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Menu } from 'primereact/menu'; // Import Menu component
 import '../styles/ticketProfileSpecific.css'; // Import your custom CSS file
 
 const TicketProfileSpecific = () => {
@@ -41,18 +40,8 @@ const TicketProfileSpecific = () => {
     }
   };
 
-  // Menu items for the left sidebar
-  const items = [
-    { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
-    { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },
-    { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
-  ];
-
   return (
     <div className="ticket-profile-specific-container">
-      <div className="left-sidebar">
-        <Menu model={items} />
-      </div>
       {ticketData ? (
         <Card title="Ticket Details" className="ticket-card">
           <div>

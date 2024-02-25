@@ -8,10 +8,12 @@ export default function TemplateDemo() {
   const items = [
     { label: 'Home', icon: 'pi pi-home', url: '/' },
     { label: 'Book Ticket', icon: 'pi pi-ticket', url: '/createticket' },
-    { label: 'Book Event', icon: 'pi pi-star-fill', url: '/event' },
+    { label: 'Book Event', icon: 'pi pi-star-fill', url: '/createevent' },
     { label: 'Profile', icon: 'pi pi-user', url: '/profile' },
+    { label: 'Animals', icon: 'pi pi-info-circle', url: '/animalProfile' },
     { label: 'Contact', icon: 'pi pi-envelope', url: '/contact' },
     { label: 'About Us', icon: 'pi pi-info-circle', url: '/about' },
+
   ];
 
   const start = (

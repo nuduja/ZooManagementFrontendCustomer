@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Dropdown } from 'primereact/dropdown';
-import "../styles/createticket.css" ;
+import '../styles/createticket.css'; // Import your CSS file
 
 function CreateTicket() {
   const [ticketType, setTicketType] = useState('');
@@ -60,8 +59,8 @@ function CreateTicket() {
       <header className="zoo-header">
         <h1>Welcome to Our Zoo</h1>
         <p>Discover the wonders of nature and wildlife at our amazing zoo. Come and experience a day filled with fun, education, and adventure!</p>
-        <p>Location: [Your Zoo's Location]</p>
-        <p>Opening Hours: [Your Zoo's Opening Hours]</p>
+        {/* <p>Location: [Your Zoo's Location]</p> */}
+        <p>Opening Hours: [9:00 AM - 6:00 PM]</p>
         <hr />
       </header>
       <div className="ticket-section-container">
@@ -83,7 +82,8 @@ function CreateTicket() {
             </div>
             <div className="input-container">
               <label>Price:</label>
-              <InputText
+              <input
+                type="text"
                 value={price}
                 disabled
                 className="zoo-input"
@@ -91,7 +91,8 @@ function CreateTicket() {
             </div>
             <div className="input-container">
               <label>Availability:</label>
-              <InputText
+              <input
+                type="text"
                 value={availability}
                 disabled
                 className="zoo-input"
@@ -100,6 +101,16 @@ function CreateTicket() {
             <Button label="Buy Tickets" type="submit" className="zoo-button" />
           </form>
         </div>
+      </div>
+      <div className="additional-content">
+        <h2>Explore Our Zoo</h2>
+        <p>Take a virtual tour of our zoo and discover our amazing attractions:</p>
+        <ul>
+          <li>Rainforest Pavilion</li>
+          <li>Safari Zone - Meet the Big Cats</li>
+          <li>Aquatic Adventure Aquarium</li>
+          <li>Desert Discovery</li>
+        </ul>
       </div>
     </div>
   );

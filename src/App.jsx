@@ -13,11 +13,18 @@ import About from './components/about';
 import EditTicket from './components/editTicket';
 import CreateTicket from './components/createTicket';
 import Footer from './components/footer';
+import AnimalProfile from './components/animalProfile';
+import AnimalProfileSpecific from './components/animalProfileSpecific';
+import CreateEvent from './components/createEvent';
+import EventProfile from './components/eventProfile';
+
 
 function App() {
     return (
         <Router>
             <Navbar/>
+            
+            
             
             <Routes>
                 <Route path="/" element={<Home />} />
@@ -31,6 +38,10 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/editticket/:ticketId" element={<EditTicket />} />
                 <Route path="/createTicket" element={<CreateTicket />} />
+                <Route path="/animalProfile" element={<AnimalProfile />} />
+                <Route path="/animalProfileSpecific/:animalId" element={<AnimalProfileSpecific />} />
+                <Route path="/createEvent" element={<CreateEvent />} />
+                <Route path="/eventprofile" element={<EventProfile />} />
             </Routes>
             <Footer/>
         </Router>

@@ -1,9 +1,14 @@
 
 .home-container {
   position: relative; /* Ensure the container serves as the reference point for absolute positioning */
-  background: linear-gradient(to left, #eee9e9, #0f7c0f);
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  transition: background-color 0.3s ease; /* Add transition for smooth color change */
+  /* background-image: url('../assets/whole1.jpg'); */
+ 
   
 }
+
 .big-header {
   text-align: center; /* Center the text horizontally */
   color: white; /* Text color */
@@ -34,57 +39,79 @@
 }
 
 .background-video {
+  margin: auto;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 100px;
+  border-bottom-left-radius: 400px;
+  border-bottom-right-radius: 400px;
+  
 }
 
 .welcome-card {
- 
+  width: 1000px;
+  height: 800px;
+  border-radius: 20px;
   text-align: center;
-  margin-top: 20px; /* Adjust as needed */
-  padding: 20px; /* Add padding for better spacing */
-  border-radius: 10px; /* Add border radius for rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
-  
+  margin-top: 100px;
+  margin-left: 150px;
+  padding: 20px;
+  border-radius: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 25px;
-  color: #000;
+  color: #033a15;
+  /* Background image */
+  background-image: url('../assets/welcomecard1.jpg'); /* Example background image */
+  background-size: cover; /* Cover the entire element with the background image */
+  background-position: center; /* Center the background image */
+  /* Background blend mode (optional) */
+  background-blend-mode: normal; /* Example blend mode */
+}
+.welcome-card p{
+  margin-top: 338px;
+  margin-left: 130px;
+  margin-right: 130px;
+  font-size: 13px;
+  font-weight: 400;
+  /* font: 1em sans-serif; */
+}
+.welcome-card :hover{
+  font-weight: bold;
 }
 
+
 .feature-panel {
+  margin: 20px;
+  margin-bottom: 100px;
   
-  text-align: center;
   font-size: 30px;
-  border-radius: 10px; /* Add border radius for rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  border-radius: 20px; /* Add border radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); /* Add box shadow for depth */
   background-color: #ffffff; /* Add background color */
   padding: 20px; /* Add padding for better spacing */
 }
 
 .zoo-list {
-  
-  /* background-image: url('../assets/back1.jpg'); */
-  /* background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover; */
+  background-color: #ffffff;
+  /* margin-left: 10px; */
+  margin-right: auto;
   list-style-type: none;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   color: #000000;
-  font-size: 30px;
-  /* text-align: center; */
+  font-size: 40px;
+  
 }
 
 .zoo-list li {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  
 }
 
 .zoo-list-item {
@@ -92,29 +119,23 @@
   flex-direction: column; /* Stack items vertically */
   align-items: center;
   width: calc(50% - 10px);
-  margin-bottom: 20px; /* Adjust spacing between items */
+  margin: 40px;
   position: relative; /* Add position relative to parent */
 }
 
 .zoo-list-icon {
-  width: 550px;
-  height: 350px;
-  margin-bottom: 10px; /* Add space between image and description */
-  margin-left: 300px;
+  width: 500px;
+  height: 360px;
+  margin: auto;
   transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Add transition for smooth animation */
-  border-radius: 50px;
-  transform-style: preserve-3d; /* Ensure child elements maintain their 3D position */
-  perspective: 1000px; /* Set the perspective for 3D effect */
+  border-radius: 100px;
+ 
+  
 }
-
-.zoo-list-icon:hover {
-  transform: rotateY(20deg); /* Apply a rotation effect on hover */
-}
-
 
 .zoo-list-item:hover .zoo-list-icon {
   transform: scale(1.2); /* Scale up the image on hover */
-  filter: brightness(90%); /* Reduce brightness on hover for a smoother effect */
+  filter: brightness(60%); /* Reduce brightness on hover for a smoother effect */
 }
 
 .zoo-list-description {
@@ -127,14 +148,15 @@
 }
 
 .zoo-list-item:hover .zoo-list-description {
-  transform: scale(1.2);
+  transform: scale(1.6);
   color: #e91717; /* Change text color on hover */
   
 }
 .event-panel {
+  margin: 20px;
   font-size: 30px;
   border-radius: 10px; /* Add border radius for rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); /* Add box shadow for depth */
   background-color: #ffffff; /* Add background color */
   padding: 20px; /* Add padding for better spacing */
 }
@@ -158,22 +180,21 @@
   width: 300px;
   text-align: center;
 }
-/* Add these styles to your CSS file */
+
 
 .sidebar-container {
   
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
   width: 600px; /* Adjust width as needed */
   padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fdf7f7;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 
 .sidebar-container .p-card {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 
 .visitor-info-card {
@@ -189,10 +210,6 @@
   margin-bottom: 5px;
 }
 
-.p-button {
-  
-  width: 100%;
-}
 
 
 
