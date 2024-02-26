@@ -1,10 +1,11 @@
 
 .home-container {
   position: relative; /* Ensure the container serves as the reference point for absolute positioning */
-  background-color: #ffffff;
+  background-image: linear-gradient(to left bottom, #4dc16d, #83cc80, #abd898, #cde3b5, #e8f0d5);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
   transition: background-color 0.3s ease; /* Add transition for smooth color change */
   /* background-image: url('../assets/whole1.jpg'); */
+
  
   
 }
@@ -184,7 +185,8 @@
 
 .sidebar-container {
   
-  margin: 0 auto;
+  margin-left: 450px;
+  margin-bottom: 300px;
   text-align: center;
   width: 600px; /* Adjust width as needed */
   padding: 20px;
