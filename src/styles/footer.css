@@ -7,7 +7,7 @@ body {
   font-family: "Open Sans", sans-serif;
   display: flex;
   flex-direction: column;
-  padding-top: 300px;
+  /* padding-top: 300px; */
 }
 
 .container {
@@ -23,7 +23,7 @@ body {
   padding: 3rem 0;
   color: #fff;
   background: #000;
-  margin-top: auto;
+  /* margin-top: auto; */
 }
 .footer__columns {
   display: flex;
