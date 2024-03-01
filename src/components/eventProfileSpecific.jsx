@@ -1,66 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
+import { Menu } from 'primereact/menu';
+import { Divider } from 'primereact/divider';
 import { Button } from 'primereact/button';
-import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/ticketProfileSpecific.css'; // Import your custom CSS file
+import { useNavigate } from 'react-router-dom';
+import { deleteEvent } from '../hooks/deleteEventHook'; // Assuming you have the appropriate hook
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const TicketProfileSpecific = () => {
-  const navigate = useNavigate();
-  const { ticketId } = useParams();
-  const [ticketData, setTicketData] = useState(null);
+const EventProfileSpecific = () => {
+  let navigate = useNavigate();
+
+  const { eventId } = useParams(); // Renamed from ticketId
+  const [eventData, setEventData] = useState(null); // Renamed from ticketData
 
   useEffect(() => {
-    const fetchTicketData = async () => {
+    const fetchEventData = async () => { // Renamed from fetchTicketData
       try {
-        const response = await fetch(`http://localhost:8080/ticket/${ticketId}`);
+        const response = await fetch(`http://localhost:8080/event/${eventId}`); // Updated endpoint
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setTicketData(data);
+        console.log(data);
+        setEventData(data);
       } catch (error) {
-        console.error('Error fetching ticket data:', error);
+        console.error('Error fetching event data:', error);
       }
     };
 
-    fetchTicketData();
-  }, [ticketId]);
+    fetchEventData();
+  }, [eventId]); // Updated dependency
 
-  const handleDelete = async () => {
-    try {
-      const response = await fetch(`http://localhost:8080/ticket/${ticketId}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error('Failed to delete ticket');
-      }
-      navigate('/');
-    } catch (error) {
-      console.error('Error deleting ticket:', error);
-    }
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    deleteEvent(eventId); // Updated function call
+    navigate('/'); // Navigation after deletion
   };
 
   return (
-    <div className="ticket-profile-specific-container">
-      {ticketData ? (
-        <Card title="Ticket Details" className="ticket-card">
+    <>
+      <div>
+        {eventData ? (
           <div>
-            <p>ID: {ticketData.id}</p>
-            <p>Price: ${ticketData.price}</p>
-            <p>Availability: {ticketData.availability}</p>
-            <p>Ticket ID: {ticketData.ticketID}</p>
-            <p>Ticket Type: {ticketData.ticketType}</p>
+            <h2>Event Details</h2>
+            <p>ID: {eventData.id}</p>
+            <p>Price: ${eventData.price}</p>
+            <p>Availability: {eventData.availability}</p>
+            <p>Event ID: {eventData.eventID}</p> {/* Assuming this is the correct property */}
+            <p>Event Type: {eventData.eventType}</p> {/* Assuming this is the correct property */}
+            <button onClick={() => navigate(`/editevent/${eventData.eventID}`)}>Edit</button> {/* Assuming correct edit route */}
+            <button onClick={handleDelete}>Delete</button>
           </div>
-          <div className="button-group">
-            <Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />
-            <Button label="Delete" className="p-button-raised p-button-danger" onClick={handleDelete} />
-          </div>
-        </Card>
-      ) : (
-        <p>Loading ticket data...</p>
-      )}
-    </div>
+        ) : (
+          <p>Loading event data...</p>
+        )}
+      </div>
+    </>
   );
 };
 
-export default TicketProfileSpecific;
+export default EventProfileSpecific;
