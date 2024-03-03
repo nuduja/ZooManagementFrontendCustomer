@@ -55,7 +55,7 @@ const TicketProfileSpecific = () => {
       </div>
       {ticketData ? (
         <Card title="Ticket Details" className="ticket-card">
-          <div>
+          <div className='info'>
             <p>ID: {ticketData.id}</p>
             <p>Price: ${ticketData.price}</p>
             <p>Availability: {ticketData.availability}</p>

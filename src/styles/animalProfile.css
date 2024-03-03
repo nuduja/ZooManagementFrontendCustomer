@@ -23,8 +23,10 @@
 }
 
 .animal-card:hover {
-  transform: scale(1.05); /* Scale up slightly on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase box shadow on hover for emphasis */
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
 }
 
 @media screen and (max-width: 768px) {

@@ -55,22 +55,69 @@ function CreateTicket() {
   };
 
   return (
-    <div>
+    
+    <div className="container">
+      {/* <!-- #CodePenChallenge: Lightness --> */}
+
+{/* <div class="overlay"></div>
+
+<div class="text">
+	<div class="wrapper">
+		<div id="Z" class="letter">Z</div>
+		<div class="shadow">Z</div>
+	</div>
+	<div class="wrapper">
+		<div id="O" class="letter">O</div>
+		<div class="shadow">O</div>
+	</div>
+	<div class="wrapper">
+		<div id="O" class="letter">O</div>
+		<div class="shadow">O</div>
+	</div>
+	<div class="wrapper">
+		<div id="T" class="letter">T</div>
+		<div class="shadow">T</div>
+	</div>
+	<div class="wrapper">
+		<div id="O" class="letter">O</div>
+		<div class="shadow">O</div>
+	</div>
+	<div class="wrapper">
+		<div id="P" class="letter">P</div>
+		<div class="shadow">P</div>
+	</div>
+	<div class="wrapper">
+		<div id="I" class="letter">I</div>
+		<div class="shadow">I</div>
+	</div>
+	<div class="wrapper">
+		<div id="A" class="letter">A</div>
+		<div class="shadow">A</div>
+	</div>
+	<div class="wrapper">
+		<div id="Stwo" class="letter">S</div>
+		<div class="shadow">S</div>
+	</div>
+</div> */}
       <header className="zoo-header">
+        
         <h1>Welcome to Our Zoo</h1>
         <p>Discover the wonders of nature and wildlife at our amazing zoo. Come and experience a day filled with fun, education, and adventure!</p>
         {/* <p>Location: [Your Zoo's Location]</p> */}
         <p>Opening Hours: [9:00 AM - 6:00 PM]</p>
         <hr />
       </header>
+      
+      <div className="blob">
+    </div>
       <div className="ticket-section-container">
         <div className="ticket-section-background"></div> {/* Background image */}
         <div className="create-ticket-container">
-          <h2>Book Online</h2>
+          <h2 className='h2'>Book Online</h2>
           {errorMessage && <Message severity="error" text={errorMessage} />}
           <form onSubmit={handleSubmit}>
             <div className="input-container">
-              <label>Ticket Type:</label>
+              <label className='t'>Ticket Type:</label>
               <Dropdown
                 value={ticketType}
                 options={ticketTypes}
@@ -80,8 +127,9 @@ function CreateTicket() {
                 className="zoo-dropdown"
               />
             </div>
+            
             <div className="input-container">
-              <label>Price:</label>
+              <label className='t'>Price:</label>
               <input
                 type="text"
                 value={price}
@@ -90,7 +138,7 @@ function CreateTicket() {
               />
             </div>
             <div className="input-container">
-              <label>Availability:</label>
+              <label className='t'>Availability:</label>
               <input
                 type="text"
                 value={availability}
@@ -102,8 +150,12 @@ function CreateTicket() {
           </form>
         </div>
       </div>
+      {/* <div className="blob">
+    </div> */}
+      
+      
       <div className="additional-content">
-        <h2>Explore Our Zoo</h2>
+        <h3>Explore Our Zoo</h3>
         <p>Take a virtual tour of our zoo and discover our amazing attractions:</p>
         <ul>
           <li>Rainforest Pavilion</li>
@@ -112,6 +164,8 @@ function CreateTicket() {
           <li>Desert Discovery</li>
         </ul>
       </div>
+      
+      
     </div>
   );
 }

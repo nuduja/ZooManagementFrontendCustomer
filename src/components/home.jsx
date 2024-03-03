@@ -25,6 +25,7 @@ const Home = () => {
     navigate('/createTicket');
   };
   return (
+    
     <div className="home-container">
       <div className="background-video-container">
         <video autoPlay loop muted className="background-video">
