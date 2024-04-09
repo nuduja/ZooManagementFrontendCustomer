@@ -51,25 +51,25 @@ function Footer() {
         <div className="footer__columns">
           <div className="footer__col">
             <h3 className="footer__col-title">
-              <i data-feather="shopping-bag"></i> <span>La boutique</span></h3>
+              <i data-feather="shopping-bag"></i> <span>Zoo</span></h3>
             <nav className="footer__nav">
               <ul className="footer__nav-list">
                 <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
-                    Mentions légales
+                  Privacy Policy
                   </a>
                 </li>
                 <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
-                    Politique de confidentialité
+                  Terms and Conditions
                   </a>
                 </li>
                 <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
-                    CGV
+                  Legal Notice
                   </a>
                 </li>
-                <li className="footer__nav-item">
+                {/* <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
                     Livraisons et retours
                   </a>
@@ -78,13 +78,13 @@ function Footer() {
                   <a href="" className="footer__nav-link">
                     Règlement concours
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
           </div>
           <div className="footer__col">
             <h3 className="footer__col-title">
-              <i data-feather="share-2"></i> <span>Nos réseaux</span></h3>
+              <i data-feather="share-2"></i> <span>Social Media</span></h3>
             <nav className="footer__nav">
               <ul className="footer__nav-list">
                 <li className="footer__nav-item">
