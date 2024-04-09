@@ -203,19 +203,19 @@ import React, { useState } from 'react';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Dropdown } from 'primereact/dropdown';
-import '../styles/createticket.css'; // Import your CSS file
+import '../styles/createEvent.css'; // Import your CSS file
 
-function CreateTicket() {
+function CreateEvent() {
   const [eventType, setEventType] = useState('');
   const [price, setPrice] = useState('');
   const [availability, setAvailability] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const eventTypes = [
-    { label: 'Local Adult', value: 'Local Adult', price: 10, availability: 100 },
-    { label: 'Local Child', value: 'Local Child', price: 5, availability: 50 },
-    { label: 'Foreign Adult', value: 'Foreign Adult', price: 20, availability: 75 },
-    { label: 'Foreign Child', value: 'Foreign Child', price: 10, availability: 25 }
+    { label: 'Elephant Circus', value: 'Elephant Circus', price: 10000, availability: 100 },
+    { label: 'Penguin Show', value: 'Penguin Show', price: 5000, availability: 50 },
+    { label: 'Dog Show', value: 'Dog Show', price: 12000, availability: 75 },
+    { label: 'Lion Show', value: 'Lion Show', price: 10000, availability: 25 }
   ];
 
   const handleEventTypeChange = (e) => {
@@ -264,9 +264,15 @@ function CreateTicket() {
         <p>Opening Hours: [9:00 AM - 6:00 PM]</p>
         <hr />
       </header>
-      <div className="ticket-section-container">
-        <div className="ticket-section-background"></div> {/* Background image */}
-        <div className="create-ticket-container">
+
+      <div id="CrossFade">
+    <img src="https://images.alphacoders.com/109/1094371.jpg" alt="img"/>
+</div>
+
+
+      <div className="event-section-container">
+        <div className="event-section-background"></div> {/* Background image */}
+        <div className="create-event-container">
           <h2>Book Online</h2>
           {errorMessage && <Message severity="error" text={errorMessage} />}
           <form onSubmit={handleSubmit}>
@@ -317,4 +323,4 @@ function CreateTicket() {
   );
 }
 
-export default CreateTicket;
+export default CreateEvent;
