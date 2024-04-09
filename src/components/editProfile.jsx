@@ -5,15 +5,15 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Message } from 'primereact/message';
 import { useNavigate } from 'react-router-dom';
-//import '../styles/EditProfile.css'; // Assuming the CSS file is named EditProfile.css
+import '../styles/editProfile.css'; 
 
 const EditProfile = () => {
     let navigate = useNavigate();
 
     const items = [
         { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
-        { label: 'Events', icon: 'pi pi-link', url: '/profile/event' },
-        { label: 'Tickets', icon: 'pi pi-home', url: '/profile/ticket' }
+        { label: 'Booked Events', icon: 'pi pi-link', url: '/profile/event' },
+        { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
     ];
 
     const [userDetails, setUserDetails] = useState({

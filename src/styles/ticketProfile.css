@@ -1,0 +1,28 @@
+.ticket-profile-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-section {
+  width: 48%; /* Adjust as needed */
+}
+
+.section-title {
+  color: #004d40; /* Dark green color */
+  margin-bottom: 1rem; /* Bottom margin */
+}
+
+.ticket-card {
+  background-color: #f5f5f5; /* Light gray background */
+  margin-bottom: 1rem; /* Bottom margin */
+  border-radius: 10px; /* Border radius */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+.ticket-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow on hover */
+}
+
+.p-mb-2 {
+  width: 200px; /* Adjust as needed */
+}

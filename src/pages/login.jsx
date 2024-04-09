@@ -34,7 +34,7 @@ const LoginPage = () => {
       if(data){        
         sessionStorage.setItem('loggedUser', true);
         sessionStorage.setItem('loggedUserDetails', username);
-        navigate('www.google.com');
+        navigate('/');
       } else{
         alert('Login failed');
       }
