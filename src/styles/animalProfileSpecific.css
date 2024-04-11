@@ -1,0 +1,23 @@
+.animal-profile-specific-container {
+    display: flex;
+    justify-content: center; /* Horizontally center items */
+    /* align-items: center; Vertically center items */
+    /* height: 100%; */
+    margin-bottom: 100px;
+  }
+  
+  .animal-section {
+    max-width: 400px;
+    padding: 20px;
+  }
+  
+  .animal-card {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex; /* Add flex display */
+    flex-direction: column; /* Align children vertically */
+    align-items: center; /* Center children horizontally */
+  }
+  

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Dropdown } from 'primereact/dropdown';
@@ -9,7 +9,9 @@ function CreateTicket() {
   const [price, setPrice] = useState('');
   const [availability, setAvailability] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    }, []);
   const ticketTypes = [
     { label: 'Local Adult', value: 'Local Adult', price: 10, availability: 100 },
     { label: 'Local Child', value: 'Local Child', price: 5, availability: 50 },

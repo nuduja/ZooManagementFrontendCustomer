@@ -19,7 +19,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   let navigate = useNavigate(); // Initialize the navigate function
-
+  
   const handleBookTicket = () => {
     // Redirect to the book ticket page when the button is clicked
     navigate('/createTicket');
