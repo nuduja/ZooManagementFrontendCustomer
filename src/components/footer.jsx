@@ -49,7 +49,7 @@ function Footer() {
       </div>
       <div className="container">
         <div className="footer__columns">
-          <div className="footer__col">
+          {/* <div className="footer__col">
             <h3 className="footer__col-title">
               <i data-feather="shopping-bag"></i> <span>La boutique</span></h3>
             <nav className="footer__nav">
@@ -81,10 +81,10 @@ function Footer() {
                 </li>
               </ul>
             </nav>
-          </div>
+          </div> */}
           <div className="footer__col">
             <h3 className="footer__col-title">
-              <i data-feather="share-2"></i> <span>Nos réseaux</span></h3>
+              <i data-feather="share-2"></i> <span>Pages</span></h3>
             <nav className="footer__nav">
               <ul className="footer__nav-list">
                 <li className="footer__nav-item">
@@ -107,7 +107,7 @@ function Footer() {
           </div>
           <div className="footer__col">
             <h3 className="footer__col-title">
-              <i data-feather="send"></i> <span>Contact</span></h3>
+              <i data-feather="send"></i> <span>Contact Us</span></h3>
             <nav className="footer__nav">
               <ul className="footer__nav-list">
                 <li className="footer__nav-item">
@@ -128,3 +128,4 @@ function Footer() {
 }
 
 export default Footer;
+

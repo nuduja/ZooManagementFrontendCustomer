@@ -1,8 +1,8 @@
 .ticket-profile-specific-container {
   display: flex;
-  /* justify-content: center;  */
-  /* align-items: center;  */
-  margin-top: 40px;
+  justify-content: center; 
+  /* align-content: center;  */
+  /* margin-top: 40px; */
 }
 
 .left-sidebar {
@@ -18,8 +18,15 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .info{
+
   font-size: large;
   
+}
+p{
+  text-shadow: -1px -1px 0 #fffdfd,  
+                1px -1px 0 #ffffff,
+               -1px 1px 0 #ffffff,
+                1px 1px 0 #ffffff; /* Add stroke effect */
 }
 
 .button-group {

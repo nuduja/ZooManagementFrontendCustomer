@@ -3,6 +3,7 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { useParams } from 'react-router-dom';
 import '../styles/editTicket.css'; // Import your custom CSS file
+import { Menu } from 'primereact/menu'; // Import Menu component
 
 const EditProfile = () => {
   const { ticketId } = useParams();
@@ -53,9 +54,18 @@ const EditProfile = () => {
       alert('Failed to update ticket data');
     }
   };
+  const items = [
+    { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
+    { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },
+    { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
+  ];
 
   return (
+    <div><div className="left-sidebar">
+    <Menu model={items} />
+  </div>
     <div className="edit-profile-container">
+      
       {ticketData ? (
         <div>
           <h2>Edit Ticket Details</h2>
@@ -85,6 +95,7 @@ const EditProfile = () => {
       ) : (
         <p>Loading ticket data...</p>
       )}
+    </div>
     </div>
   );
 };

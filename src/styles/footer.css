@@ -27,7 +27,7 @@ body {
 }
 .footer__columns {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .footer__col-title {
   font-size: 1.6rem;
@@ -53,7 +53,7 @@ body {
   flex-direction: column;
   gap: 1.5rem;
 }
-.footer__copyrights {
+/* .footer__copyrights {
   padding-top: 3rem;
   margin-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -63,7 +63,7 @@ body {
 }
 .footer__copyrights p a {
   margin-left: 0.5rem;
-}
+} */
 @keyframes parralax {
   0% {
     background-position: 260px;

@@ -49,10 +49,12 @@ const TicketProfileSpecific = () => {
   ];
 
   return (
-    <div className="ticket-profile-specific-container">
-      <div className="left-sidebar">
+    <div>
+    <div className="left-sidebar">
         <Menu model={items} />
       </div>
+    <div className="ticket-profile-specific-container">
+      
       {ticketData ? (
         <Card title="Ticket Details" className="ticket-card">
           <div className='info'>
@@ -70,6 +72,7 @@ const TicketProfileSpecific = () => {
       ) : (
         <p>Loading ticket data...</p>
       )}
+    </div>
     </div>
   );
 };

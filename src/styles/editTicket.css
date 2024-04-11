@@ -1,5 +1,9 @@
 /* editProfile.css */
+.left-sidebar {
+  width: 200px; /* Adjust width as needed */
+  padding: 20px;
 
+}
 .edit-profile-container {
     display: flex;
     flex-direction: column;
@@ -27,4 +31,5 @@
   .edit-profile-container .p-button {
     width: 100%;
   }
+  
   
