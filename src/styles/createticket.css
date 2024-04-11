@@ -131,7 +131,8 @@
 }
 .t{
   color: #000000;
-  /* background-color: #159435; */
+  background-color: #159435;
+  opacity: 0.9;
   margin: 40px;
   text-shadow: -1px -1px 0 #ffffff,  
                 1px -1px 0 #ffffff,
