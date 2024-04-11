@@ -1,54 +1,239 @@
-/* Home.css */
-/* .home-container {
-    text-align: center;
-    padding: 20px;
-  } */
+
+.home-container {
+  position: relative; /* Ensure the container serves as the reference point for absolute positioning */
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+  transition: background-color 0.3s ease; /* Add transition for smooth color change */
+  /* background-image: url('../assets/whole1.jpg'); */
+ 
   
-  /* .welcome-image {
-    width: 100%;
-    max-width: 600px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  } */
-/*   
-  .zoo-heading {
-    font-size: 2.5rem;
-    color: #2e643e; 
+}
+
+.big-header {
+  text-align: center; /* Center the text horizontally */
+  color: white; /* Text color */
+  position: absolute; /* Position the header absolutely within its container */
+  top: 50%; /* Align the top edge of the header to the middle of the container */
+  left: 50%; /* Align the left edge of the header to the middle of the container */
+  transform: translate(-50%, -50%); /* Center the header vertically and horizontally */
+  z-index: 1; /* Ensure the header appears above the video */
+  font-size: 100px;
+  animation: fadeIn 1s ease-in-out forwards; /* Apply fadeIn animation */
+  opacity: 0; /* Initially set opacity to 0 */
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  
-  .zoo-subtitle {
-    font-size: 1.2rem;
-    color: #4d4d4d; 
+  100% {
+    opacity: 1;
   }
+}
+
+.background-video-container {
   
-  .zoo-section-heading {
-    font-size: 1.8rem;
-    color: #2e643e;
-    margin-bottom: 10px;
-  }
+  position: relative; /* Position the container relative to its normal position */
+  width: 100%; /* Occupy the full width of the parent container */
+  height: 100vh; /* Set the height to fill the viewport */
+  overflow: hidden; /* Hide any overflow content */
+}
+
+.background-video {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom-left-radius: 400px;
+  border-bottom-right-radius: 400px;
   
+}
+
+.welcome-card {
+  text-shadow: -1px -1px 0 #f8f1f1,  
+                1px -1px 0 #ffffff,
+               -1px 1px 0 #ffffff,
+                1px 1px 0 #ffffff; /* Add stroke effect */
+  width: 1000px;
+  height: 800px;
+  border-radius: 20px;
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 150px;
+  padding: 20px;
+  border-radius: 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 25px;
+  color: #033a15;
+  /* Background image */
+  background-image: url('../assets/welcomecard1.jpg'); /* Example background image */
+  background-size: cover; /* Cover the entire element with the background image */
+  background-position: center; /* Center the background image */
+  /* Background blend mode (optional) */
+  background-blend-mode: normal; /* Example blend mode */
+}
+
+.welcome-card p{
+  margin-top: 338px;
+  margin-left: 130px;
+  margin-right: 130px;
+  font-size: 13px;
+  font-weight: 400;
+  /* font: 1em sans-serif; */
+}
+.welcome-card :hover{
+  font-weight: bold;
+  
+}
+
+
+.feature-panel {
+  
+  margin: 20px;
+  margin-bottom: 100px;
+  
+  font-size: 30px;
+  border-radius: 20px; /* Add border radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); /* Add box shadow for depth */
+  background-color: #ffffff; /* Add background color */
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.zoo-list {
+  background-color: #ffffff;
+  /* background-color: rgba(131, 117, 117, 0.9);  */
+  /* margin-left: 10px; */
+  margin-right: auto;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #ffffff;
+  font-size: 40px;
+  text-shadow: -1px -1px 0 #000,  
+                1px -1px 0 #000,
+               -1px 1px 0 #000,
+                1px 1px 0 #000; /* Add stroke effect */
+  
+}
+
+.zoo-list li {
+  
+  display: flex;
+  align-items: center;
+  
+}
+
+.zoo-list-item {
+  
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  width: calc(50% - 10px);
+  margin: 40px;
+  position: relative; /* Add position relative to parent */
+}
+
+.zoo-list-icon {
+  width: 500px;
+  height: 360px;
+  margin: auto;
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out; /* Add transition for smooth animation */
+  border-radius: 100px;
+ 
+  
+}
+
+.zoo-list-item:hover .zoo-list-icon {
+  transform: scale(1.2); /* Scale up the image on hover */
+  filter: brightness(60%); /* Reduce brightness on hover for a smoother effect */
+}
+
+.zoo-list-description {
+  
+  font-size: 20px;
+  margin-left: 50px;
+  margin-right: 0px;
+  text-align: center;
+  transition: color 0.3s ease-in-out; /* Add transition for smooth color change */
+}
+
+.zoo-list-item:hover .zoo-list-description {
+  transform: scale(1.6);
+  color: #e91717; /* Change text color on hover */
+  
+}
+.event-panel {
+  margin: 20px;
+  font-size: 30px;
+  border-radius: 10px; /* Add border radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9); /* Add box shadow for depth */
+  background-color: #ffffff; /* Add background color */
+  padding: 20px; /* Add padding for better spacing */
+}
+
+
+
+/* Adjust the layout for larger screens */
+@media (min-width: 768px) {
   .zoo-list {
-    list-style-type: none;
-    padding: 0;
-    font-size: 1.1rem;
-    color: #4d4d4d;
+    display: flex;
+    justify-content: space-between;
   }
-  
-  .zoo-list li::before {
-    content: '•';
-    color: #2e643e;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
+  .zoo-list li {
+    width: 48%; /* Adjust the width of each list item */
   }
+}
+.p-col-6{
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+
+.sidebar-container {
   
-  .zoo-button {
-    background-color: #2e643e;
-    color: #fff;
-    margin-right: 10px;
-  }
-  
-  .zoo-button:hover {
-    background-color: #1f4429; 
-  } */
-  
+  margin: 0 auto;
+  text-align: center;
+  width: 600px; /* Adjust width as needed */
+  padding: 20px;
+  background-color: #fdf7f7;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.sidebar-container .p-card {
+  margin: 10px;
+}
+
+.visitor-info-card {
+  text-align: center;
+}
+
+.visitor-info-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.visitor-info-list li {
+  margin-bottom: 5px;
+}
+
+.home-container,
+.background-video-container,
+.content-container,
+.welcome-section,
+.feature-section,
+.event-section,
+.button-section,
+.sidebar-container {
+  background-color: rgba(255, 255, 255, 0.7); /* Adjust the last value (alpha) to control transparency */
+}
+
+
+

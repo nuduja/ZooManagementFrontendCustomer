@@ -1,0 +1,40 @@
+.ticket-profile-specific-container {
+  display: flex;
+  justify-content: center; 
+  /* align-content: center;  */
+  /* margin-top: 40px; */
+}
+
+.left-sidebar {
+  width: 200px; /* Adjust width as needed */
+  padding: 20px;
+
+}
+
+.ticket-card {
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.info{
+
+  font-size: large;
+  
+}
+p{
+  text-shadow: -1px -1px 0 #fffdfd,  
+                1px -1px 0 #ffffff,
+               -1px 1px 0 #ffffff,
+                1px 1px 0 #ffffff; /* Add stroke effect */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.button-group .p-button {
+  margin-right: 10px;
+}

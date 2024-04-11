@@ -1,0 +1,35 @@
+/* editProfile.css */
+.left-sidebar {
+  width: 200px; /* Adjust width as needed */
+  padding: 20px;
+
+}
+.edit-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .edit-profile-container h2 {
+    color: #004d40; /* Dark green color */
+    margin-bottom: 20px;
+  }
+  
+  .edit-profile-container form {
+    width: 300px;
+  }
+  
+  .edit-profile-container .p-field {
+    margin-bottom: 20px;
+  }
+  
+  .edit-profile-container .p-inputtext {
+    width: 100%;
+  }
+  
+  .edit-profile-container .p-button {
+    width: 100%;
+  }
+  
+  

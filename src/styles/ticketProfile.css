@@ -1,0 +1,36 @@
+.ticket-profile-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-section {
+  width: 48%; /* Adjust as needed */
+}
+
+.section-title {
+  color: #004d40; /* Dark green color */
+  margin-bottom: 1rem; /* Bottom margin */
+}
+
+.ticket-card {
+  background-image: url('../assets/ticketback2.webp') ;
+
+  flex: 0 0 calc(33.333% - 1rem); /* Adjust width as needed */
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease; /* Adding transition for smooth effect */
+  background-color: #ece6e6; /* Set background color */
+  border-radius: 20px; /* Add border radius for rounded corners */
+  padding: 20px; /* Add padding for content spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Add box shadow for depth */
+}
+
+.ticket-card:hover {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.p-mb-2 {
+  width: 200px; /* Adjust as needed */
+}

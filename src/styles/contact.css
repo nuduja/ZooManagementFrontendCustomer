@@ -1,0 +1,59 @@
+.contact-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-image: url('../assets/lion.jpg');
+  background-size: cover; /* Adjusts the background image to cover the entire container */
+  background-position: center; /* Centers the background image */
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+h1 {
+  color: #000000;
+}
+
+p {
+  color: #fffcfc;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #005a3c; /* Green color for labels */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #005a3c; /* Green button background color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #007e55; /* Darker green color on hover */
+}
