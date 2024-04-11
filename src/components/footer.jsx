@@ -49,42 +49,42 @@ function Footer() {
       </div>
       <div className="container">
         <div className="footer__columns">
-          {/* <div className="footer__col">
+          <div className="footer__col">
             <h3 className="footer__col-title">
               <i data-feather="shopping-bag"></i> <span>La boutique</span></h3>
             <nav className="footer__nav">
               <ul className="footer__nav-list">
                 <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
-                    Mentions légales
+                    Privacy Policy
                   </a>
                 </li>
                 <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
-                    Politique de confidentialité
+                    Terms & Conditions
                   </a>
                 </li>
-                <li className="footer__nav-item">
+                {/* <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
                     CGV
                   </a>
-                </li>
+                </li> */}
                 <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
-                    Livraisons et retours
+                    Legal Notices
                   </a>
                 </li>
-                <li className="footer__nav-item">
+                {/* <li className="footer__nav-item">
                   <a href="" className="footer__nav-link">
                     Règlement concours
                   </a>
-                </li>
+                </li> */}
               </ul>
             </nav>
-          </div> */}
+          </div>
           <div className="footer__col">
             <h3 className="footer__col-title">
-              <i data-feather="share-2"></i> <span>Pages</span></h3>
+              <i data-feather="share-2"></i> <span>Social Media</span></h3>
             <nav className="footer__nav">
               <ul className="footer__nav-list">
                 <li className="footer__nav-item">
@@ -107,12 +107,12 @@ function Footer() {
           </div>
           <div className="footer__col">
             <h3 className="footer__col-title">
-              <i data-feather="send"></i> <span>Contact Us</span></h3>
+              <i data-feather="send"></i> <span>Contact</span></h3>
             <nav className="footer__nav">
               <ul className="footer__nav-list">
                 <li className="footer__nav-item">
                   <a href="mailto:contact.laboiserie@gmail.com" className="footer__nav-link">
-                    contact.laboiserie@gmail.com
+                    contactZoo@gmail.com
                   </a>
                 </li>
               </ul>
@@ -128,4 +128,3 @@ function Footer() {
 }
 
 export default Footer;
-
