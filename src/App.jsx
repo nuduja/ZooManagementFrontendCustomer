@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './index.css';
 import Navbar from './components/navbar';
 import Home from './components/home';
 import Login from './pages/login';
@@ -17,6 +18,10 @@ import AnimalProfile from './components/animalProfile';
 import AnimalProfileSpecific from './components/animalProfileSpecific';
 import CreateEvent from './components/createEvent';
 import EventProfile from './components/eventProfile';
+import AnimalTypes from './components/animalTypes';
+
+
+
 
 
 function App() {
@@ -38,7 +43,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/editticket/:ticketId" element={<EditTicket />} />
                 <Route path="/createTicket" element={<CreateTicket />} />
-                <Route path="/animalProfile" element={<AnimalProfile />} />
+                <Route path="/animalTypes" element={<AnimalTypes />} />
+                <Route path="/animalProfile/:animalSpeciesName" element={<AnimalProfile />} />
                 <Route path="/animalProfileSpecific/:animalId" element={<AnimalProfileSpecific />} />
                 <Route path="/createEvent" element={<CreateEvent />} />
                 <Route path="/eventprofile" element={<EventProfile />} />

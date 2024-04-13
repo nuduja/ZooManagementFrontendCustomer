@@ -7,6 +7,7 @@ import { Avatar } from 'primereact/avatar'; // Import Avatar component
 import { useNavigate } from 'react-router-dom';
 import { deleteUser } from '../hooks/deleteUserHook';
 import '../styles/profile.css';
+import avatar from '../assets/avatar.jpg'
 
 const Profile = () => {
     let navigate = useNavigate();
@@ -70,14 +71,14 @@ const Profile = () => {
             </div>
             <div className="profile-section">
                 <Divider />
-                <Card title={<Avatar label={userDetails.name.charAt(0)} style={{ width: '100px', height: '100px', fontSize: '50px'}} />} className="profile-card"> {/* Avatar component */}
+                <Card title={<Avatar image={avatar} label={userDetails.name.charAt(0)} style={{ width: '100px', height: '100px', fontSize: '50px'}} />} className="profile-card"> {/* Avatar component */}
                     {error && <p className="error-message">Error: {error}</p>}
                     <div className="profile-details">
                         <p><span className="profile-label">Name:</span> {userDetails.name}</p>
                         <p><span className="profile-label">Username:</span> {userDetails.username}</p>
                         <p><span className="profile-label">Phone:</span> {userDetails.phone}</p>
                         <p><span className="profile-label">Email:</span> {userDetails.email}</p>
-                        <p><span className="profile-label">Password:</span> {userDetails.password}</p>
+                        {/* <p><span className="profile-label">Password:</span> {userDetails.password}</p> */}
                     </div>
                 </Card>
                 <div className="profile-buttons">
