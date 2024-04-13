@@ -6,6 +6,7 @@ import { Calendar } from 'primereact/calendar'; // Import Calendar from PrimeRea
 import '../styles/createticket.css'; // Import your CSS file
 
 function CreateTicket() {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [ticketType, setTicketType] = useState('');
   const [price, setPrice] = useState('');
   const [username, setUsername] = useState('');
@@ -14,8 +15,7 @@ function CreateTicket() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Fetch the username from session storage and set it to the username state
-    const storedUsername = sessionStorage.getItem('loggedUserDetails');
+    const storedUsername = sessionStorage.getItem('username');
     if (storedUsername) {
       setUsername(storedUsername);
     }
@@ -42,7 +42,7 @@ function CreateTicket() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/v1/ticket', {
+      const response = await fetch(`${baseUrl}ticket`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

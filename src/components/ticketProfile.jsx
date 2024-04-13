@@ -5,6 +5,7 @@ import { Menu } from 'primereact/menu';
 import '../styles/ticketProfile.css';
 
 const TicketProfile = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [localTickets, setLocalTickets] = useState([]);
   const [foreignTickets, setForeignTickets] = useState([]);
 
@@ -21,7 +22,7 @@ const TicketProfile = () => {
       }
       console.log('Logged-in username:', username);
       
-      const response = await fetch(`http://localhost:8080/api/v1/ticket`);
+      const response = await fetch(`${baseUrl}ticket`);
       
       if (!response.ok) {
         throw new Error('Network response was not ok');

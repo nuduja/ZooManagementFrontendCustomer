@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/ticketProfileSpecific.css'; // Import your custom CSS file
 
 const TicketProfileSpecific = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const { ticketId } = useParams();
   const [ticketData, setTicketData] = useState(null);
@@ -12,7 +13,7 @@ const TicketProfileSpecific = () => {
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/ticket/${ticketId}`);
+        const response = await fetch(`${baseUrl}ticket/${ticketId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -28,7 +29,7 @@ const TicketProfileSpecific = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/ticket/${ticketId}`, {
+      const response = await fetch(`${baseUrl}ticket/${ticketId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {

@@ -6,6 +6,7 @@ import '../styles/editTicket.css'; // Import your custom CSS file
 import { Menu } from 'primereact/menu'; // Import Menu component
 
 const EditProfile = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const { ticketId } = useParams();
   const [ticketData, setTicketData] = useState(null);
   const [editedTicketData, setEditedTicketData] = useState(null);
@@ -13,7 +14,7 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchTicketData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/ticket/${ticketId}`);
+        const response = await fetch(`${baseUrl}ticket/${ticketId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

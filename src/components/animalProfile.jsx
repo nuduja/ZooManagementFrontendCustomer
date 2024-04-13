@@ -5,6 +5,7 @@ import '../styles/animalProfile.css';
 import Lion from '../assets/lion.jpg';
 
 const AnimalProfile = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [animals, setAnimals] = useState([]);
 
   useEffect(() => {
@@ -13,7 +14,7 @@ const AnimalProfile = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/animal');
+      const response = await fetch(`${baseUrl}animal`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }

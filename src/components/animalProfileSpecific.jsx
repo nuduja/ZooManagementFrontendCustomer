@@ -74,6 +74,7 @@ import Lion from '../assets/lion.jpg';
 import '../styles/animalProfileSpecific.css'; // Import your custom CSS file
 
 const AnimalProfileSpecific = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const { animalId } = useParams();
   const [animalData, setAnimalData] = useState(null);
@@ -81,8 +82,7 @@ const AnimalProfileSpecific = () => {
   useEffect(() => {
     const fetchAnimalData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/an
-        imal/${animalId}`);
+        const response = await fetch(`${baseUrl}animal/${animalId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -98,7 +98,7 @@ const AnimalProfileSpecific = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/animal/${animalId}`, {
+      const response = await fetch(`${baseUrl}animal/${animalId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {

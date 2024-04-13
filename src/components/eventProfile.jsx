@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const EventProfile = () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
@@ -21,7 +22,7 @@ const EventProfile = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:8080/event');
+            const response = await fetch(`${baseUrl}/event`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }

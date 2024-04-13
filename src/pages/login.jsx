@@ -10,7 +10,8 @@ const LoginPage = () => {
     username: '',
     password: '',
   });
-  let navigate = useNavigate(); 
+  let navigate = useNavigate();
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const [submitted, setSubmitted] = useState(false);
 
@@ -21,7 +22,7 @@ const LoginPage = () => {
     const password = formData.password;
 
     try{
-      const response = await fetch("http://localhost:8080/api/v1/user/login", {
+      const response = await fetch(`${baseUrl}user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

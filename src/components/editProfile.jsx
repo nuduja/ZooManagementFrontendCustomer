@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/editProfile.css'; 
 
 const EditProfile = () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     let navigate = useNavigate();
 
     const items = [
@@ -31,7 +32,7 @@ const EditProfile = () => {
         const fetchData = async () => {
             const loggedUsername = sessionStorage.getItem('loggedUserDetails');
             try {
-                const response = await fetch(`http://localhost:8080/user/${loggedUsername}`);
+                const response = await fetch(`${baseUrl}user/${loggedUsername}`);
                 const data = await response.json();
                 setUserDetails(data);
             } catch (err) {
