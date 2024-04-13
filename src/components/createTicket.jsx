@@ -2,21 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Dropdown } from 'primereact/dropdown';
+import { Calendar } from 'primereact/calendar'; // Import Calendar from PrimeReact
 import '../styles/createticket.css'; // Import your CSS file
 
 function CreateTicket() {
   const [ticketType, setTicketType] = useState('');
   const [price, setPrice] = useState('');
-  const [availability, setAvailability] = useState('');
+  const [username, setUsername] = useState('');
+  const [ticketDate, setTicketDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    }, []);
+    // Fetch the username from session storage and set it to the username state
+    const storedUsername = sessionStorage.getItem('loggedUserDetails');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
+
   const ticketTypes = [
-    { label: 'Local Adult', value: 'Local Adult', price: 10, availability: 100 },
-    { label: 'Local Child', value: 'Local Child', price: 5, availability: 50 },
-    { label: 'Foreign Adult', value: 'Foreign Adult', price: 20, availability: 75 },
-    { label: 'Foreign Child', value: 'Foreign Child', price: 10, availability: 25 }
+    { label: 'Local Adult', value: 'LOCAL_ADULT', price: 29.5 },
+    { label: 'Local Child', value: 'LOCAL_KID', price: 5 },
+    { label: 'Foreign Adult', value: 'FOREIGN_ADULT', price: 20 },
+    { label: 'Foreign Child', value: 'FOREIGN_KID', price: 10 }
   ];
 
   const handleTicketTypeChange = (e) => {
@@ -24,21 +33,25 @@ function CreateTicket() {
     const selectedTicket = ticketTypes.find(ticket => ticket.value === selectedTicketType);
     setTicketType(selectedTicketType);
     setPrice(selectedTicket.price);
-    setAvailability(selectedTicket.availability);
+  };
+
+  const formatDateForInput = (dateString) => {
+    return dateString; // No formatting needed for input field
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/ticket', {
+      const response = await fetch('http://localhost:8080/api/v1/ticket', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          TicketType: ticketType,
-          Price: parseFloat(price),
-          Availability: availability,
+          ticketType: ticketType,
+          price: parseFloat(price),
+          username: username,
+          ticketDate: ticketDate.toISOString().substring(0, 10)
         }),
       });
       if (!response.ok) {
@@ -49,7 +62,8 @@ function CreateTicket() {
       // Clear form fields after successful creation
       setTicketType('');
       setPrice('');
-      setAvailability('');
+      setUsername('');
+      setTicketDate('');
     } catch (error) {
       console.error('Error creating ticket:', error);
       setErrorMessage('Failed to create ticket. Please try again.');
@@ -57,61 +71,14 @@ function CreateTicket() {
   };
 
   return (
-    
     <div className="container">
-      {/* <!-- #CodePenChallenge: Lightness --> */}
-
-{/* <div class="overlay"></div>
-
-<div class="text">
-	<div class="wrapper">
-		<div id="Z" class="letter">Z</div>
-		<div class="shadow">Z</div>
-	</div>
-	<div class="wrapper">
-		<div id="O" class="letter">O</div>
-		<div class="shadow">O</div>
-	</div>
-	<div class="wrapper">
-		<div id="O" class="letter">O</div>
-		<div class="shadow">O</div>
-	</div>
-	<div class="wrapper">
-		<div id="T" class="letter">T</div>
-		<div class="shadow">T</div>
-	</div>
-	<div class="wrapper">
-		<div id="O" class="letter">O</div>
-		<div class="shadow">O</div>
-	</div>
-	<div class="wrapper">
-		<div id="P" class="letter">P</div>
-		<div class="shadow">P</div>
-	</div>
-	<div class="wrapper">
-		<div id="I" class="letter">I</div>
-		<div class="shadow">I</div>
-	</div>
-	<div class="wrapper">
-		<div id="A" class="letter">A</div>
-		<div class="shadow">A</div>
-	</div>
-	<div class="wrapper">
-		<div id="Stwo" class="letter">S</div>
-		<div class="shadow">S</div>
-	</div>
-</div> */}
       <header className="zoo-header">
-        
         <h1>Welcome to Our Zoo</h1>
         <p>Discover the wonders of nature and wildlife at our amazing zoo. Come and experience a day filled with fun, education, and adventure!</p>
-        {/* <p>Location: [Your Zoo's Location]</p> */}
         <p>Opening Hours: [9:00 AM - 6:00 PM]</p>
         <hr />
       </header>
-      
-      <div className="blob">
-    </div>
+
       <div className="ticket-section-container">
         <div className="ticket-section-background"></div> {/* Background image */}
         <div className="create-ticket-container">
@@ -129,7 +96,6 @@ function CreateTicket() {
                 className="zoo-dropdown"
               />
             </div>
-            
             <div className="input-container">
               <label className='t'>Price:</label>
               <input
@@ -140,22 +106,31 @@ function CreateTicket() {
               />
             </div>
             <div className="input-container">
-              <label className='t'>Availability:</label>
+              <label className='t'>Username:</label>
               <input
                 type="text"
-                value={availability}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 disabled
                 className="zoo-input"
+                required
+              />
+            </div>
+            <div className="input-container">
+              <label className='t'>Ticket Date:</label>
+              <Calendar
+                value={ticketDate}
+                onChange={(e) => setTicketDate(e.value)}
+                dateFormat="yy-mm-dd" // Format for "April 30, 2019"
+                className="zoo-input"
+                required
               />
             </div>
             <Button label="Buy Tickets" type="submit" className="zoo-button" />
           </form>
         </div>
       </div>
-      {/* <div className="blob">
-    </div> */}
-      
-      
+
       <div className="additional-content">
         <h3>Explore Our Zoo</h3>
         <p>Take a virtual tour of our zoo and discover our amazing attractions:</p>
@@ -166,8 +141,6 @@ function CreateTicket() {
           <li>Desert Discovery</li>
         </ul>
       </div>
-      
-      
     </div>
   );
 }
