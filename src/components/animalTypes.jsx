@@ -33,12 +33,13 @@ const AnimalTypes = () => {
       <div className="animal-card-container">
         {animalTypes.map(animalType => (
           <Link to={`/animalProfile/${animalType}`} >
-          <Card key={animalType} title={animalType.name} className="animal-card">
+          <Card  className="animal-card">
             {/* Add an image for each animal type */}
             {/* <img src={getAnimalImage(animalType)} alt={animalType} className="animal-image" /> */}
             {/* <div className="p-mb-2"> */}
               {/* <p>{animalType}</p> */}
               <img src={Lion} alt={animalTypes} className="animal-image" />
+              <div className="animal-name">{animalType.name}</div>
               
                 
               

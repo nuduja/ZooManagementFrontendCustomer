@@ -16,7 +16,7 @@
   background-image: url('../assets/ticketback2.webp') ;
 
   flex: 0 0 calc(33.333% - 1rem); /* Adjust width as needed */
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   transition: transform 0.3s ease; /* Adding transition for smooth effect */
   background-color: #ece6e6; /* Set background color */
   border-radius: 20px; /* Add border radius for rounded corners */

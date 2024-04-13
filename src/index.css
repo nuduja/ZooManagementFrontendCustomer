@@ -1,0 +1,100 @@
+/* Import PrimeReact styles */
+/* @import '~primereact/resources/themes/saga-blue/theme.css';
+@import '~primereact/resources/primereact.min.css';
+@import '~primeicons/primeicons.css'; */
+
+/* Global Styles */
+body {
+  font-family: 'Roboto', sans-serif; /* Use Roboto as the default font */
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Set a light background color */
+}
+
+/* Container Styles */
+.container {
+  max-width: 1200px; /* Set a max-width for the content container */
+  margin: 0 auto; /* Center the content container */
+  padding: 20px; /* Add padding around the content */
+}
+
+/* Header Styles */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Button Styles */
+.p-button-custom {
+  margin-right: 10px;
+}
+
+/* Card Styles */
+.p-card-custom {
+  margin-bottom: 20px;
+}
+
+/* Panel Styles */
+.p-panel-custom {
+  margin-bottom: 20px;
+}
+
+/* List Styles */
+.p-list-custom {
+  margin-bottom: 20px;
+}
+
+/* Grid Styles */
+.p-grid-custom {
+  margin-bottom: 20px;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .header {
+    padding: 5px 0;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Add your additional styles below */
+
+/* Example */
+.custom-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Example: Override PrimeReact styles */
+.p-datatable-striped {
+  border: none;
+}
+

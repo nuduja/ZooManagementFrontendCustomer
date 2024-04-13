@@ -10,7 +10,7 @@ export default function TemplateDemo() {
     { label: 'Book Ticket', icon: 'pi pi-ticket', url: '/createticket' },
     { label: 'Book Event', icon: 'pi pi-star-fill', url: '/createevent' },
     { label: 'Profile', icon: 'pi pi-user', url: '/profile' },
-    { label: 'Animals', icon: 'pi pi-info-circle', url: '/animalTypes' },
+    { label: 'Animals', icon: 'pi pi-paw', url: '/animalTypes' },
     { label: 'Contact', icon: 'pi pi-envelope', url: '/contact' },
     { label: 'About Us', icon: 'pi pi-info-circle', url: '/about' },
 
