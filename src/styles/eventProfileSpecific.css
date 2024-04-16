@@ -1,0 +1,21 @@
+/* eventProfileSpecific.css */
+
+.left-sidebar {
+  float: left;
+  width: 20%;
+  padding-top: 20px;
+}
+
+.event-profile-specific-container {
+  float: left;
+  width: 80%;
+  padding-top: 20px;
+}
+
+.event-card {
+  width: 100%;
+}
+
+.button-group {
+  margin-top: 20px;
+}

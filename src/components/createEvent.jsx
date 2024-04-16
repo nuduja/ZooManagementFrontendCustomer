@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/createevent.css';
 
 function CreateEvent() {
     const [eventType, setEventType] = useState('');
@@ -35,40 +36,45 @@ function CreateEvent() {
     }
   };
   return (
-    <div>
-      <h2>Book Online</h2>
-      {errorMessage && <p>{errorMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Event Type:
-          <input
-            type="text"
-            value={eventType}
-            onChange={(e) => setEventType(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Price:
-          <input
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Availability:
-          <input
-            type="text"
-            value={availability}
-            onChange={(e) => setAvailability(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Book Event</button>
-      </form>
-    </div>
+    // 
+    
+    <div className="container">
+      <img className="background-image" src="https://shorturl.at/enEK5" alt="Background" />
+  <h2>Book Online</h2>
+  {errorMessage && <p>{errorMessage}</p>}
+  <form className="form-container" onSubmit={handleSubmit}>
+  
+    <label>
+      Event Type:
+      <input
+        type="text"
+        value={eventType}
+        onChange={(e) => setEventType(e.target.value)}
+        required
+      />
+    </label>
+    <label>
+      Price:
+      <input
+        type="number"
+        value={price}
+        onChange={(e) => setPrice(e.target.value)}
+        required
+      />
+    </label>
+    <label>
+      Availability:
+      <input
+        type="text"
+        value={availability}
+        onChange={(e) => setAvailability(e.target.value)}
+        required
+      />
+    </label>
+    <button type="submit">Book Event</button>   
+  </form>
+</div>
+
   );
 
 }
