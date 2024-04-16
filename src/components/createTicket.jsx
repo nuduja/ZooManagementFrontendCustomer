@@ -41,6 +41,13 @@ function CreateTicket() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validation
+    if (!ticketType || !price || !username || !ticketDate) {
+      setErrorMessage('Please fill out all fields.');
+      return;
+    }
+  
     try {
       const response = await fetch(`${baseUrl}ticket`, {
         method: 'POST',
@@ -64,11 +71,13 @@ function CreateTicket() {
       setPrice('');
       setUsername('');
       setTicketDate('');
+      setErrorMessage('');
     } catch (error) {
       console.error('Error creating ticket:', error);
       setErrorMessage('Failed to create ticket. Please try again.');
     }
   };
+  
 
   return (
     <div className="container">

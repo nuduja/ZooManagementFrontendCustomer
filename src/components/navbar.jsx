@@ -14,55 +14,64 @@ export default function Navbar() {
     { label: 'Home', icon: 'pi pi-home', url: '/' },
     { label: 'Book Ticket', icon: 'pi pi-ticket', url: '/createticket' },
     { label: 'Book Event', icon: 'pi pi-star-fill', url: '/createevent' },
-    // { label: 'Profile', icon: 'pi pi-user', url: '/profile' },
     { label: 'Animals', icon: 'pi pi-paw', url: '/animalTypes' },
     { label: 'Contact', icon: 'pi pi-envelope', url: '/contact' },
     { label: 'About Us', icon: 'pi pi-info-circle', url: '/about' },
   ];
 
-  if (isLoggedIn) {
-      items.push({ label: logedUser, icon: 'pi pi-user', url: '/profile' });
-  }
+  
 
   const handleLogout = () => {
-     sessionStorage.clear();
-     navigate('/');
+    sessionStorage.clear();
+    navigate('/');
   };
 
   const start = (
-    <img
-      alt="logo"
-      src={Logo}
-      height="40"
-      className="mr-2"
-    ></img>
+    <Link to="/" className="p-menuitem-link">
+      <img
+        alt="logo"
+        src={Logo}
+        height="40"
+        className="mr-2"
+      ></img>
+    </Link>
   );
+  
 
   const end = (
     <div className="flex align-items-center">
-        { !isLoggedIn && (
-            <>
-                <Link to="/login" className="p-menuitem-link">
-                    <i className="pi pi-sign-in"></i>
-                    <span>Log In</span>
-                </Link>
-                <Link to="/signup" className="p-menuitem-link">
-                    <i className="pi pi-angle-up"></i>
-                    <span>Sign up</span>
-                </Link>
-            </>
-        )}
-        { isLoggedIn && (
-            <div onClick={handleLogout} className="p-menuitem-link" style={{ cursor: 'pointer' }}>
-                <i className="pi pi-sign-out"></i>
-                <span>Log Out</span>
-            </div>
-        )}
+      
+      {!isLoggedIn ? (
+        <>
+          <Link to="/login" className="p-menuitem-link">
+            <i className="pi pi-sign-in"></i>
+            <span>Log In</span>
+          </Link>
+          <Link to="/signup" className="p-menuitem-link">
+            <i className="pi pi-angle-up"></i>
+            <span>Sign up</span>
+          </Link>
+          
+        </>
+      ) : (
+        <>
+          
+          <div onClick={handleLogout} className="p-menuitem-link" style={{ cursor: 'pointer' }}>
+            <i className="pi pi-sign-out"></i>
+            <span>Log Out</span>
+          </div>
+          <Link to="/profile" className="p-menuitem-link">
+            <i className="pi pi-user"></i>
+            
+            <span>{logedUser}</span>
+          </Link>
+        </>
+      )}
     </div>
   );
 
   return (
-    <div className="card" style={{ width: '100%', position: '', top: 0, zIndex: 1000 , margin: 0 }}>
+    <div className="card" style={{ width: '100%', position: '', top: 0, zIndex: 1000, margin: 0 }}>
       <Menubar model={items} start={start} end={end} />
     </div>
   );

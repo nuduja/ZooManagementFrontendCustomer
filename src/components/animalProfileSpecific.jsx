@@ -78,7 +78,7 @@ const AnimalProfileSpecific = () => {
   const navigate = useNavigate();
   const { animalId } = useParams();
   const [animalData, setAnimalData] = useState(null);
-
+  
   useEffect(() => {
     const fetchAnimalData = async () => {
       try {

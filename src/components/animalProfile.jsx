@@ -37,7 +37,7 @@ const AnimalProfile = () => {
             <img src={Lion} alt={animal.name} className="animal-image" />
             <div className="p-mb-2">
               <p>{animal.description}</p>
-              <Link to={`/animalProfileSpecific/${animal.name}`} className="p-button p-button-text">
+              <Link to={`/animalProfileSpecific/${animal.animalId}`} className="p-button p-button-text">
                 View Details
               </Link>
             </div>
