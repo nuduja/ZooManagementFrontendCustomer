@@ -15,7 +15,7 @@ const TicketProfile = () => {
 
   const fetchData = async () => {
     try {
-      const username = sessionStorage.getItem('loggedUserDetails');
+      const username = sessionStorage.getItem('username');
       if (!username) {
         console.error('Username is not available in session storage');
         return;
@@ -32,9 +32,12 @@ const TicketProfile = () => {
       console.log('Fetched data:', data);
 
       const userTickets = data.filter(ticket => ticket.username === username);
+      console.log("usrerTickets", userTickets)
       
       setLocalTickets(userTickets.filter(ticket => ticket.ticketType.includes('LOCAL')));
       setForeignTickets(userTickets.filter(ticket => ticket.ticketType.includes('FOREIGN')));
+
+      console.log("setForeignTickets", foreignTickets)
       
     } catch (error) {
       console.error('Error fetching data:', error);
