@@ -1,8 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {ProtectedRoute} from './validators/ProtectedRoute.jsx'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { ProtectedRoute } from './validators/ProtectedRoute.jsx';
 import './index.css';
 import Navbar from './components/navbar';
+import Navbar1 from './components/navbar1.jsx';
 import Home from './components/home';
 import Login from './pages/login';
 import Signup from './pages/signup';
@@ -25,14 +26,26 @@ import EventProfileSpecific from './components/eventProfileSpecific';
 function App() {
     return (
         <Router>
-            <Navbar/>
+            <AppRoutes />
+        </Router>
+    );
+}
+
+function AppRoutes() {
+    const location = useLocation();
+    const isLoginPage = location.pathname === '/login';
+    const isSignupPage = location.pathname === '/signup';
+
+    return (
+        <>
+            {(isLoginPage || isSignupPage) ? <Navbar1 /> : <Navbar />}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/profile" element={
                     <ProtectedRoute>
-                        <Profile/>
+                        <Profile />
                     </ProtectedRoute>
                 } />
                 <Route path="/editprofile" element={
@@ -44,7 +57,7 @@ function App() {
                     <ProtectedRoute>
                         <TicketProfile />
                     </ProtectedRoute>
-                    } />
+                } />
                 <Route path="/ticket/:ticketId" element={
                     <ProtectedRoute>
                         <TicketProfileSpecific />
@@ -66,12 +79,9 @@ function App() {
                     <ProtectedRoute>
                         <AnimalTypes />
                     </ProtectedRoute>
-               } />
-                <Route path="/animalProfile/:animalSpeciesName" element={
-                    <ProtectedRoute>
-                        <AnimalProfile />
-                    </ProtectedRoute>
                 } />
+                <Route path="/animalProfile/:species" element={<AnimalProfile />} />
+
                 <Route path="/animalProfileSpecific/:animalId" element={
                     <ProtectedRoute>
                         <AnimalProfileSpecific />
@@ -93,8 +103,8 @@ function App() {
                     </ProtectedRoute>
                 } />
             </Routes>
-            <Footer/>
-        </Router>
+            <Footer />
+        </>
     );
 }
 
