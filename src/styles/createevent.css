@@ -14,8 +14,10 @@
     border-radius: 10px;
     position: relative; /* Ensure relative positioning for z-index */
     z-index: 2; /* Ensure form appears above the background image */
-    background-color: #e2eced; /* Ensure background is white */
-  }
+    background-color: rgba(226, 236, 237, 0.8); /* 80% opacity background color */
+
+}
+
  
   .form-container label {
     display: block;

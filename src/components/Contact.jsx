@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
+// import emailjs from '@emailjs/browser';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
@@ -46,7 +46,7 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <h1>Contact Us</h1>
-      <p>Have a question or feedback? Reach out to us!</p>
+      <h4>Have a question or feedback? Reach out to us!</h4>
       {/*<form onSubmit={handleSubmit}>*/}
       {/*  <div className="p-field">*/}
       {/*    <label htmlFor="name">Your Name:</label>*/}

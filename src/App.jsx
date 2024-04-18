@@ -20,6 +20,7 @@ import AnimalProfileSpecific from './components/animalProfileSpecific';
 import CreateEvent from './components/createEvent';
 import EventProfile from './components/eventProfile';
 import AnimalTypes from './components/animalTypes';
+import EventProfileSpecific from './components/eventProfileSpecific';
 
 function App() {
     return (
@@ -84,6 +85,11 @@ function App() {
                 <Route path="/eventprofile" element={
                     <ProtectedRoute>
                         <EventProfile />
+                    </ProtectedRoute>
+                } />
+                <Route path="/eventProfileSpecific/:eventId" element={
+                    <ProtectedRoute>
+                        <EventProfileSpecific />
                     </ProtectedRoute>
                 } />
             </Routes>

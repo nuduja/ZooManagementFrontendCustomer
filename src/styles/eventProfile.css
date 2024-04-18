@@ -1,38 +1,31 @@
 .event-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
-.left-sidebar{
-    position: relative;
-    flex: 0 0 100%;
-}
-
-
-@media (max-width: 768px) {
-    .left-sidebar,
-    .event-card {
-        width: 100%; /* On smaller screens, display cards in full width */
-    }
+.left-sidebar {
+    flex: 0 0 20%;
+    margin-right: 1rem; /* Add margin to create space between the sidebar and event card */
 }
 
 .event-card {
     margin-top: 20px;
-    background-image: url('../assets/ticketback2.webp') ;
-  
-    flex: 0 0 calc(33.333% - 1rem); /* Adjust width as needed */
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease; /* Adding transition for smooth effect */
-    background-color: #ece6e6; /* Set background color */
-    border-radius: 20px; /* Add border radius for rounded corners */
-    padding: 20px; /* Add padding for content spacing */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9); /* Add box shadow for depth */
-  }
-  
-  .event-card:hover {
-    transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+    background-image: url('https://shorturl.at/eDHP6');
+    flex: 0 0 calc(40% - 1rem); /* Adjust width as needed */
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease;
+    background-color: #ece6e6;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.event-card:hover {
+    transform: scale(1.05); /* Scale up the card on hover */
     box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
-  }
+    transition: transform 0.3s ease; /* Add transition for smooth effect */
+}
+

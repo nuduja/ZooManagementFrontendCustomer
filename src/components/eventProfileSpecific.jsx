@@ -74,7 +74,7 @@ import { Menu } from 'primereact/menu';
 import '../styles/eventProfileSpecific.css'; // Import your custom CSS file
 
 
-const TicketProfileSpecific = () => {
+const EventProfileSpecific = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const { eventId } = useParams(); // Updated to eventId
@@ -83,7 +83,7 @@ const TicketProfileSpecific = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await fetch(`${baseUrl}ticket/${ticketId}`);
+        const response = await fetch(`${baseUrl}event/${eventId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -99,7 +99,7 @@ const TicketProfileSpecific = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`${baseUrl}ticket/${ticketId}`, {
+      const response = await fetch(`${baseUrl}event/${eventId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
@@ -126,10 +126,12 @@ const TicketProfileSpecific = () => {
         <Card title="Event Details" className="event-card"> {/* Updated title and class name */}
           <div>
             <p>ID: {eventData.id}</p> {/* Updated to event ID */}
+            <p>Event Name: {eventData.eventName}</p>{/* Updated to event name */}
+            <p>Event ID: {eventData.eventID}</p> 
             <p>Price: ${eventData.price}</p>
-            <p>Availability: {eventData.availability}</p>
-            <p>Event ID: {eventData.eventID}</p> {/* Updated to event ID */}
-            <p>Event Type: {eventData.eventType}</p> {/* Updated to event type */}
+            <p>Date: {eventData.eventDate}</p>
+            <p>Capacity: {eventData.capacity}</p>
+            <p>Location: {eventData.eventLocation}</p>
           </div>
           <div className="button-group">
             <Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editevent/${eventData.eventID}`)} /> {/* Updated to edit event */}

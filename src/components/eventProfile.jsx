@@ -75,14 +75,34 @@ const EventProfile = () => {
     useEffect(() => {
         const fetchDataAndUpdateState = async () => {
             try {
-                const data = await fetchData();
-                console.log('Fetched data:', data);
-                if (data) {
-                    setEvents(data);
+                const username = sessionStorage.getItem('username');
+                if (!username) {
+                  console.error('Username is not available in session storage');
+                  return;
                 }
-            } catch (error) {
+                console.log('Logged-in username:', username);
+                
+                const response = await fetch(`${baseUrl}event/username/${username}`);
+                
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                
+                const data = await response.json();
+                console.log('Fetched data:', data);
+                setEvents(data)
+          
+                // const userTickets = data.filter(ticket => ticket.username === username);
+                // console.log("usrerTickets", userTickets)
+                
+                // setLocalTickets(userTickets.filter(ticket => ticket.ticketType.includes('LOCAL')));
+                // setForeignTickets(userTickets.filter(ticket => ticket.ticketType.includes('FOREIGN')));
+          
+                // console.log("setForeignTickets", foreignTickets)
+                
+              } catch (error) {
                 console.error('Error fetching data:', error);
-            }
+              }
         };
 
         fetchDataAndUpdateState();
@@ -116,7 +136,18 @@ const EventProfile = () => {
       </div>
             <div className="event-container">
                 {events.map(event => (
-                    <Card key={event.id} title={event.eventType} subTitle={`Price: ${event.price} | Availability: ${event.availability}`} className="event-card">
+                    <Card 
+                    key={event.id} 
+                    title={event.eventName} 
+                    subTitle={
+                      <div>
+                        <div>Date: {event.eventDate}</div>
+                        <div>Event ID: {event.eventID}</div>
+                        <div>Capacity: {event.capacity}</div>
+                      </div>
+                    } 
+                    className="event-card"
+                  >
                         <div className="p-mb-2">
                             <Link to={`/eventProfileSpecific/${event.eventID}`} className="p-button p-button-text">
                                 View Details
