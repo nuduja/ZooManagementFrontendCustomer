@@ -19,11 +19,7 @@ const AnimalTypes = () => {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      // Extract unique animal types from animalspeciesname
-      const uniqueAnimalTypes = [...new Set(data.map(animal => animal.animalSpeciesName))];
-      // Create an array of objects with name and id properties
-      const animalTypes = uniqueAnimalTypes.map((name, index) => ({ name, id: index + 1 }));
-      setAnimalTypes(animalTypes);
+      setAnimalTypes(data);
     } catch (error) {
       console.error('Error fetching Animal Types data:', error);
     }
@@ -38,13 +34,13 @@ const AnimalTypes = () => {
       <div className="animal-card-container">
         {data.map(animalType => (
           <Link to={{
-            pathname: `/animalProfile/${animalType.id}`,
-            state: { selectedSpecies: animalType.name }
+            pathname: `/animalProfile/${animalType.animalSpeciesId}`,
+            state: { selectedSpecies: animalType.animalSpeciesId }
           }} key={animalType.id}>
           
           <Card className="animal-card">
-            <img src={Lion} alt={animalType.name} className="animal-image" />
-            <div className="animal-name">{animalType.name}</div>
+            <img src={Lion} alt={animalType.animalSpeciesName} className="animal-image" />
+            <div className="animal-name">{animalType.animalSpeciesName}</div>
           </Card>
         </Link>
         ))}

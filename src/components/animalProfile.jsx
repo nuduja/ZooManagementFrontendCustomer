@@ -3,10 +3,12 @@ import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
 import '../styles/animalProfile.css';
 import Lion from '../assets/lion.jpg';
+import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 const AnimalProfile = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const { animalSpeciesId } = useParams();
   const [animals, setAnimals] = useState([]);
   
 
@@ -16,7 +18,7 @@ const AnimalProfile = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${baseUrl}animal`);
+      const response = await fetch(`${baseUrl}animal/bySpeciesId/${animalSpeciesId}`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
