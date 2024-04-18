@@ -1,20 +1,33 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { Menubar } from 'primereact/menubar';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
 import Logo from '../assets/welcome.jpg';
 
-export default function TemplateDemo() {
+export default function Navbar() {
+  let navigate = useNavigate();
+
+  const isLoggedIn = sessionStorage.getItem('loginStatus') === 'true';
+  const logedUser = sessionStorage.getItem('username');
   const items = [
     { label: 'Home', icon: 'pi pi-home', url: '/' },
     { label: 'Book Ticket', icon: 'pi pi-ticket', url: '/createticket' },
     { label: 'Book Event', icon: 'pi pi-star-fill', url: '/createevent' },
-    { label: 'Profile', icon: 'pi pi-user', url: '/profile' },
-    { label: 'Animals', icon: 'pi pi-info-circle', url: '/animalProfile' },
+    // { label: 'Profile', icon: 'pi pi-user', url: '/profile' },
+    { label: 'Animals', icon: 'pi pi-paw', url: '/animalTypes' },
     { label: 'Contact', icon: 'pi pi-envelope', url: '/contact' },
     { label: 'About Us', icon: 'pi pi-info-circle', url: '/about' },
-
   ];
+
+  if (isLoggedIn) {
+      items.push({ label: logedUser, icon: 'pi pi-user', url: '/profile' });
+  }
+
+  const handleLogout = () => {
+     sessionStorage.clear();
+     navigate('/');
+  };
 
   const start = (
     <img
@@ -27,18 +40,24 @@ export default function TemplateDemo() {
 
   const end = (
     <div className="flex align-items-center">
-      <Link to="/login" className="p-menuitem-link">
-        <i className="pi pi-sign-in"></i>
-        <span>Log In</span>
-      </Link>
-      <Link to="/logout" className="p-menuitem-link">
-        <i className="pi pi-sign-out"></i>
-        <span>Log Out</span>
-      </Link>
-      <Link to="/signup" className="p-menuitem-link">
-        <i className="pi pi-angle-up"></i>
-        <span>Sign up</span>
-      </Link>
+        { !isLoggedIn && (
+            <>
+                <Link to="/login" className="p-menuitem-link">
+                    <i className="pi pi-sign-in"></i>
+                    <span>Log In</span>
+                </Link>
+                <Link to="/signup" className="p-menuitem-link">
+                    <i className="pi pi-angle-up"></i>
+                    <span>Sign up</span>
+                </Link>
+            </>
+        )}
+        { isLoggedIn && (
+            <div onClick={handleLogout} className="p-menuitem-link" style={{ cursor: 'pointer' }}>
+                <i className="pi pi-sign-out"></i>
+                <span>Log Out</span>
+            </div>
+        )}
     </div>
   );
 

@@ -74,7 +74,8 @@ import { Menu } from 'primereact/menu';
 import '../styles/eventProfileSpecific.css'; // Import your custom CSS file
 
 
-const EventProfileSpecific = () => {
+const TicketProfileSpecific = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
   const { eventId } = useParams(); // Updated to eventId
   const [eventData, setEventData] = useState(null); // Updated to eventData
@@ -82,7 +83,7 @@ const EventProfileSpecific = () => {
   useEffect(() => {
     const fetchEventData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/event/${eventId}`); // Updated to fetch event data
+        const response = await fetch(`${baseUrl}ticket/${ticketId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -98,7 +99,7 @@ const EventProfileSpecific = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/event/${eventId}`, { // Updated to delete event
+      const response = await fetch(`${baseUrl}ticket/${ticketId}`, {
         method: 'DELETE',
       });
       if (!response.ok) {

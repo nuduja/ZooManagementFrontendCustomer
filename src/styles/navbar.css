@@ -5,6 +5,7 @@
     border-bottom: 2px solid #24b844; /* Green border bottom */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 10); /* Add shadow for depth */
     font-family: 'Arial', sans-serif; /* Choose a suitable font */
+    
 }
 
 .p-menubar .p-menuitem-link {

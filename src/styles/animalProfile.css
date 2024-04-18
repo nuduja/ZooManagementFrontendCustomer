@@ -13,7 +13,7 @@
 }
 
 .animal-card {
-  flex: 0 0 calc(33.333% - 1rem); /* Adjust width as needed */
+  flex: 0 0 calc(25% - 1rem); /* Adjust width as needed */
   margin-bottom: 1rem;
   transition: transform 0.3s ease; /* Adding transition for smooth effect */
   background-color: #f0ebeb; /* Set background color */
@@ -21,9 +21,12 @@
   padding: 20px; /* Add padding for content spacing */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Add box shadow for depth */
 }
+.animal-image{
+  width: 300px;
+}
 
 .animal-card:hover {
-  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  transform: perspective(900px) translateY(-5%) rotateX(10deg) translateZ(0);
   box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);

@@ -6,6 +6,7 @@ import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import '../styles/signup.css'
 const SignUpPage = () => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -29,16 +30,17 @@ const SignUpPage = () => {
     const phone = formData.phone;
     const email = formData.email;
     const password = formData.password;
+    const role = "USER"
 
     try{
       if(!confPassword && name && username && phone && email && password) {
         console.log('here2')
-        const response = await fetch("http://localhost:8080/user/register", {
+        const response = await fetch(`${baseUrl}user/register`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({name, username, phone, email, password})
+          body: JSON.stringify({name, username, phone, email, password, role})
         });
         setSubmitted(false);
         navigate('/login');

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import '../styles/createevent.css';
 
 function CreateEvent() {
-    const [eventType, setEventType] = useState('');
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const [eventType, setEventType] = useState('');
   const [price, setPrice] = useState('');
   const [availability, setAvailability] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -10,7 +11,7 @@ function CreateEvent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/event', {
+      const response = await fetch(`${baseUrl}event`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
