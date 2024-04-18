@@ -14,7 +14,7 @@ const AnimalTypes = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`${baseUrl}animal`);
+      const response = await fetch(`${baseUrl}animalspecies`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -37,12 +37,16 @@ const AnimalTypes = () => {
       <h2 className="section-title">Animal Types</h2>
       <div className="animal-card-container">
         {data.map(animalType => (
-          <Link to={`/animalProfile/${animalType.id}`} key={animalType.id}>
-            <Card className="animal-card" key={animalType.id}>
-              <img src={Lion} alt={animalType.name} className="animal-image" />
-              <div className="animal-name">{animalType.name}</div>
-            </Card>
-          </Link>
+          <Link to={{
+            pathname: `/animalProfile/${animalType.id}`,
+            state: { selectedSpecies: animalType.name }
+          }} key={animalType.id}>
+          
+          <Card className="animal-card">
+            <img src={Lion} alt={animalType.name} className="animal-image" />
+            <div className="animal-name">{animalType.name}</div>
+          </Card>
+        </Link>
         ))}
       </div>
     </div>

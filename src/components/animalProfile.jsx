@@ -3,10 +3,12 @@ import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
 import '../styles/animalProfile.css';
 import Lion from '../assets/lion.jpg';
+import { useLocation } from 'react-router-dom';
 
 const AnimalProfile = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [animals, setAnimals] = useState([]);
+  
 
   useEffect(() => {
     fetchData();

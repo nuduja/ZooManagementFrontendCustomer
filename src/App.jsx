@@ -79,11 +79,8 @@ function AppRoutes() {
                         <AnimalTypes />
                     </ProtectedRoute>
                 } />
-                <Route path="/animalProfile/:animalSpeciesName" element={
-                    <ProtectedRoute>
-                        <AnimalProfile />
-                    </ProtectedRoute>
-                } />
+                <Route path="/animalProfile/:species" element={<AnimalProfile />} />
+
                 <Route path="/animalProfileSpecific/:animalId" element={
                     <ProtectedRoute>
                         <AnimalProfileSpecific />
