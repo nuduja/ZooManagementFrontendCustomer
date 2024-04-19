@@ -4,16 +4,20 @@ import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
-import '../styles/login.css'
+import { Dialog } from 'primereact/dialog'; // <-- Import Dialog
+import '../styles/login.css';
+
 const LoginPage = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
   });
+  const [submitted, setSubmitted] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false); // <-- State for success dialog
+  const [showErrorDialog, setShowErrorDialog] = useState(false); // <-- State for error dialog
+
   let navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
-
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,30 +25,48 @@ const LoginPage = () => {
     const username = formData.username;
     const password = formData.password;
 
-    try{
+    try {
       const response = await fetch(`${baseUrl}user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({username, password})
+        body: JSON.stringify({ username, password })
       });
 
       const data = await response.json();
 
-      if(data){
+      if (data) {
         sessionStorage.setItem("loginStatus", "true");
         sessionStorage.setItem("username", username);
-        navigate('/');
-      } else{
-        alert('Login failed');
+        setShowSuccessDialog(true); // <-- Show success dialog
+        setTimeout(() => {
+          navigate('/');
+        }, 2000);
+      } else {
+        setShowErrorDialog(true); // <-- Show error dialog
       }
 
-    }catch(error){
+      setSubmitted(false);
+
+    } catch (error) {
       console.error("Login Error: ", error);
+      setShowErrorDialog(true); // <-- Show error dialog
       setSubmitted(true);
     }
   };
+
+  const successFooter = (
+    <div>
+      <Button label="OK" icon="pi pi-check" onClick={() => setShowSuccessDialog(false)} autoFocus />
+    </div>
+  );
+
+  const errorFooter = (
+    <div>
+      <Button label="OK" icon="pi pi-times" onClick={() => setShowErrorDialog(false)} autoFocus />
+    </div>
+  );
 
   return (
     <div className="login-container p-grid p-justify-center">
@@ -81,6 +103,24 @@ const LoginPage = () => {
           {submitted && (
             <Message severity="error" text="Invalid username or password. Please try again." />
           )}
+          {/* Success Dialog */}
+          <Dialog
+            visible={showSuccessDialog}
+            onHide={() => setShowSuccessDialog(false)}
+            header="Success"
+            footer={successFooter}
+          >
+            Login successful!
+          </Dialog>
+          {/* Error Dialog */}
+          <Dialog
+            visible={showErrorDialog}
+            onHide={() => setShowErrorDialog(false)}
+            header="Error"
+            footer={errorFooter}
+          >
+            Login unsuccessful. Please check your credentials.
+          </Dialog>
         </Card>
       </div>
     </div>

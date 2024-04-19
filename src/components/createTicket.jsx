@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Dropdown } from 'primereact/dropdown';
-import { Calendar } from 'primereact/calendar'; // Import Calendar from PrimeReact
-import '../styles/createticket.css'; // Import your CSS file
+import { Calendar } from 'primereact/calendar';
+import { Dialog } from 'primereact/dialog';
+import '../styles/createticket.css';
 
 function CreateTicket() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -12,6 +13,8 @@ function CreateTicket() {
   const [username, setUsername] = useState('');
   const [ticketDate, setTicketDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,16 +38,13 @@ function CreateTicket() {
     setPrice(selectedTicket.price);
   };
 
-  const formatDateForInput = (dateString) => {
-    return dateString; // No formatting needed for input field
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validation
     if (!ticketType || !price || !username || !ticketDate) {
       setErrorMessage('Please fill out all fields.');
+      setShowErrorDialog(true);
       return;
     }
   
@@ -64,9 +64,7 @@ function CreateTicket() {
       if (!response.ok) {
         throw new Error('Failed to create ticket');
       }
-      // Optionally, you can handle success response here
-      alert('Ticket created successfully');
-      // Clear form fields after successful creation
+      setShowSuccessDialog(true);
       setTicketType('');
       setPrice('');
       setUsername('');
@@ -75,9 +73,14 @@ function CreateTicket() {
     } catch (error) {
       console.error('Error creating ticket:', error);
       setErrorMessage('Failed to create ticket. Please try again.');
+      setShowErrorDialog(true);
     }
   };
-  
+
+  const onHideDialog = () => {
+    setShowSuccessDialog(false);
+    setShowErrorDialog(false);
+  };
 
   return (
     <div className="container">
@@ -89,7 +92,7 @@ function CreateTicket() {
       </header>
 
       <div className="ticket-section-container">
-        <div className="ticket-section-background"></div> {/* Background image */}
+        <div className="ticket-section-background"></div>
         <div className="create-ticket-container">
           <h2 className='h2'>Book Online</h2>
           {errorMessage && <Message severity="error" text={errorMessage} />}
@@ -130,7 +133,7 @@ function CreateTicket() {
               <Calendar
                 value={ticketDate}
                 onChange={(e) => setTicketDate(e.value)}
-                dateFormat="yy-mm-dd" // Format for "April 30, 2019"
+                dateFormat="yy-mm-dd"
                 className="zoo-input"
                 required
               />
@@ -150,6 +153,26 @@ function CreateTicket() {
           <li>Desert Discovery</li>
         </ul>
       </div>
+
+      <Dialog
+        visible={showSuccessDialog}
+        onHide={onHideDialog}
+        header="Success"
+        className="custom-dialog"
+        footer={<Button label="OK" onClick={onHideDialog} />}
+      >
+        <p>Ticket created successfully</p>
+      </Dialog>
+
+      <Dialog
+        visible={showErrorDialog}
+        onHide={onHideDialog}
+        header="Error"
+        className="custom-dialog"
+        footer={<Button label="OK" onClick={onHideDialog} />}
+      >
+        <p>{errorMessage}</p>
+      </Dialog>
     </div>
   );
 }

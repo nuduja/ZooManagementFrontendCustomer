@@ -61,7 +61,7 @@ const TicketProfileSpecific = () => {
           <div className='info'>
             <p>ID: {ticketData.id}</p>
             <p>Price: ${ticketData.price}</p>
-            <p>Availability: {ticketData.availability}</p>
+            <p>Ticket Date: {ticketData.ticketDate}</p>
             <p>Ticket ID: {ticketData.ticketID}</p>
             <p>Ticket Type: {ticketData.ticketType}</p>
           </div>

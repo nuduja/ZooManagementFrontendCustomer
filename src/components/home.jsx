@@ -121,10 +121,10 @@ Join us as we celebrate the beauty and diversity of the natural world, and disco
         <div className={classNames('button-section', 'animated-button')}>
           <div className="p-grid p-justify-center">
             <div className="p-col-6">
-              <Button label="See All Exhibits" icon="pi pi-eye" className="p-button-raised p-button-rounded p-button-text p-button-lg p-mb-2" />
+              {/* <Button label="See All Exhibits" icon="pi pi-eye" className="p-button-raised p-button-rounded p-button-text p-button-lg p-mb-2" /> */}
             </div>
             <div className="p-col-6">
-              <Button label="View Event Calendar" icon="pi pi-calendar" className="p-button-raised p-button-rounded p-button-text p-button-lg p-mb-2" />
+              {/* <Button label="View Event Calendar" icon="pi pi-calendar" className="p-button-raised p-button-rounded p-button-text p-button-lg p-mb-2" /> */}
             </div>
           </div>
         </div>
@@ -134,7 +134,7 @@ Join us as we celebrate the beauty and diversity of the natural world, and disco
       <div className="sidebar-container">
       <Card title="Special Offer">
         <p>Don't miss our special offer! Get 50% off on all tickets this weekend.</p>
-        <Button label="Learn More" icon="pi pi-info-circle" className="p-button-raised p-button-rounded p-button-info p-mb-2" />
+        {/* <Button label="Learn More" icon="pi pi-info-circle" className="p-button-raised p-button-rounded p-button-info p-mb-2" /> */}
       </Card>
 
         <Card className="visitor-info-card" header="Visitor Information">

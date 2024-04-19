@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'primereact/calendar';
+import { Dialog } from 'primereact/dialog';
 import '../styles/createevent.css';
+import { Button } from 'primereact/button';
 
 function CreateEvent() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [eventName, setEventName] = useState('');
   const [eventDescription, setEventDescription] = useState('');
-  const [price, setPrice] = useState('');
   const [eventLocation, setEventLocation] = useState('');
   const [capacity, setCapacity] = useState('');
-  const [eventDate, setEventDate] = useState(null); // Changed from ticketDate to date
+  const [eventDate, setEventDate] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
-  const [selectedPrice, setSelectedPrice] = useState(null);
-  const [username, setUsername] = useState(''); // State for the username
+  const [username, setUsername] = useState('');
+  const [displayDialog, setDisplayDialog] = useState(false);
+  const [dialogMessage, setDialogMessage] = useState('');
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -21,15 +23,6 @@ function CreateEvent() {
       setUsername(storedUsername);
     }
   }, []);
-
-
-  // const handleEventTypeChange = (e) => {
-  //   const selectedEventType = e.value;
-  //   const selectedEvent = eventTypes.find(event => event.value === selectedEventType);
-  //   setEventType(selectedEventType);
-  //   setPrice(selectedEvent.price);
-  //   setSelectedPrice(selectedEvent.price); // Update selectedPrice when event type changes
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,35 +33,38 @@ function CreateEvent() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          eventName: eventName,
-          eventDescription : eventDescription,
-          // eventDate: eventDate.toISOString().substring(0, 10), // Use date instead of eventDate
-          eventDate: eventDate.toISOString(), // Use date instead of eventDate
-          // eventDate: "2019-04-25T14:05:15.953", // Use date instead of eventDate
-          eventLocation :eventLocation,
-          capacity : parseInt(capacity),
-          username: username, // Include username in the request
-          
-          
-
+          eventName,
+          eventDescription,
+          eventDate: eventDate.toISOString(),
+          eventLocation,
+          capacity: parseInt(capacity),
+          username,
         }),
       });
       if (!response.ok) {
         throw new Error('Failed to create event');
       }
-      alert('Event created successfully');
+      setDisplayDialog(true);
+      setDialogMessage('Event created successfully');
       setEventName('');
       setEventDescription('');
-      setPrice('');
       setEventLocation('');
       setCapacity('');
-      setEventDate(null); // Reset date after successful creation
-      setUsername(''); // Clear username field after successful creation
+      setEventDate(null);
+      setUsername('');
     } catch (error) {
       console.error('Error creating event:', error);
       setErrorMessage('Failed to create event. Please try again.');
+      setDisplayDialog(true);
+      setDialogMessage(errorMessage);
     }
   };
+
+  const dialogFooter = (
+    <div>
+      <Button label="OK" icon="pi pi-check" onClick={() => setDisplayDialog(false)} />
+    </div>
+  );
 
   return (
     <div className="container">
@@ -113,7 +109,7 @@ function CreateEvent() {
           />
         </label>
         <label>
-         Event Location:
+          Event Location:
           <input
             type="text"
             value={eventLocation}
@@ -133,6 +129,16 @@ function CreateEvent() {
           </label>
         </div>
         <button type="submit">Book Event</button>
+
+        {/* Dialog */}
+        <Dialog
+          visible={displayDialog}
+          onHide={() => setDisplayDialog(false)}
+          header="Message"
+          footer={dialogFooter}
+        >
+          <p>{dialogMessage}</p>
+        </Dialog>
       </form>
     </div>
   );

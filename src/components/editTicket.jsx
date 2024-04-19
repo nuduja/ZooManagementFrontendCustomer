@@ -1,15 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import '../styles/editTicket.css'; // Import your custom CSS file
 import { Menu } from 'primereact/menu'; // Import Menu component
+import { Dropdown } from 'primereact/dropdown'; // Import Dropdown component
+import { Calendar } from 'primereact/calendar'; // Import Calendar component
+import { Dialog } from 'primereact/dialog'; // Import Dialog component
+import { useNavigate } from 'react-router-dom';
 
 const EditProfile = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const { ticketId } = useParams();
   const [ticketData, setTicketData] = useState(null);
-  const [editedTicketData, setEditedTicketData] = useState(null);
+  const [editedTicketData, setEditedTicketData] = useState({
+    ticketType: '',
+    ticketDate: '',
+  });
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
+  const navigate = useNavigate();
+
+  const ticketTypes = [
+    { label: 'Local Adult', value: 'LOCAL_ADULT', price: 29.5 },
+    { label: 'Local Child', value: 'LOCAL_KID', price: 5 },
+    { label: 'Foreign Adult', value: 'FOREIGN_ADULT', price: 20 },
+    { label: 'Foreign Child', value: 'FOREIGN_KID', price: 10 }
+  ];
 
   useEffect(() => {
     const fetchTicketData = async () => {
@@ -20,9 +37,13 @@ const EditProfile = () => {
         }
         const data = await response.json();
         setTicketData(data);
-        setEditedTicketData(data); // Initialize edited data with current data
+        setEditedTicketData({
+          ticketType: data.ticketType,
+          ticketDate: data.ticketDate,
+        });
       } catch (error) {
         console.error('Error fetching ticket data:', error);
+        setShowErrorDialog(true);
       }
     };
 
@@ -34,10 +55,19 @@ const EditProfile = () => {
     setEditedTicketData({ ...editedTicketData, [name]: value });
   };
 
+  const handleDateChange = (e) => {
+    const selectedDate = e.value;
+    setEditedTicketData(prevData => ({
+      ...prevData,
+      ticketDate: selectedDate.toISOString().substring(0, 10)
+    }));
+  };
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8080/ticket/${ticketId}`, {
+      const response = await fetch(`http://localhost:8080/api/v1/ticket/updatebyticketid/${ticketId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -47,14 +77,19 @@ const EditProfile = () => {
       if (!response.ok) {
         throw new Error('Failed to update ticket data');
       }
-      // Optionally, you can update the state with the updated data
-      setTicketData(editedTicketData);
-      alert('Ticket data updated successfully');
+      setShowSuccessDialog(true);
     } catch (error) {
       console.error('Error updating ticket data:', error);
-      alert('Failed to update ticket data');
+      setShowErrorDialog(true);
     }
   };
+
+  const onHideDialog = () => {
+    setShowSuccessDialog(false);
+    setShowErrorDialog(false);
+    navigate(-1);
+  };
+
   const items = [
     { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
     { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },
@@ -62,41 +97,67 @@ const EditProfile = () => {
   ];
 
   return (
-    <div><div className="left-sidebar">
-    <Menu model={items} />
-  </div>
-    <div className="edit-profile-container">
-      
-      {ticketData ? (
-        <div>
-          <h2>Edit Ticket Details</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="p-field">
-              <label htmlFor="price">Price:</label>
-              <InputText
-                id="price"
-                name="price"
-                value={editedTicketData.price}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="p-field">
-              <label htmlFor="availability">Availability:</label>
-              <InputText
-                id="availability"
-                name="availability"
-                value={editedTicketData.availability}
-                onChange={handleInputChange}
-              />
-            </div>
-            {/* Add other fields for editing */}
-            <Button type="submit" label="Submit" className="p-button-raised p-button-success" />
-          </form>
-        </div>
-      ) : (
-        <p>Loading ticket data...</p>
-      )}
-    </div>
+    <div>
+      <div className="left-sidebar">
+        <Menu model={items} />
+      </div>
+      <div className="edit-profile-container">
+        
+        {ticketData ? (
+          <div>
+            <h2>Edit Ticket Details</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="p-field">
+                <label htmlFor="ticketType">Ticket Type:</label>
+                <Dropdown
+                  id="ticketType"
+                  name="ticketType"
+                  value={editedTicketData.ticketType}
+                  options={ticketTypes}
+                  onChange={handleInputChange}
+                  optionLabel="label"
+                  placeholder="Select a Ticket Type"
+                />
+              </div>
+              <div className="p-field">
+                <label htmlFor="ticketDate">Ticket Date:</label>
+                <Calendar
+                  id="ticketDate"
+                  name="ticketDate"
+                  value={new Date(editedTicketData.ticketDate)}
+                  onChange={handleDateChange}
+                  dateFormat="yy-mm-dd"
+                  showIcon
+                  className="p-inputtext"
+                />
+              </div>
+              <Button type="submit" label="Submit" className="p-button-raised p-button-success" />
+            </form>
+          </div>
+        ) : (
+          <p>Loading ticket data...</p>
+        )}
+      </div>
+
+      <Dialog
+        visible={showSuccessDialog}
+        onHide={onHideDialog}
+        header="Success"
+        className="custom-dialog"
+        footer={<Button label="OK" onClick={onHideDialog} />}
+      >
+        <p>Ticket data updated successfully!</p>
+      </Dialog>
+
+      <Dialog
+        visible={showErrorDialog}
+        onHide={onHideDialog}
+        header="Error"
+        className="custom-dialog"
+        footer={<Button label="OK" onClick={onHideDialog} />}
+      >
+        <p>Failed to update ticket data</p>
+      </Dialog>
     </div>
   );
 };

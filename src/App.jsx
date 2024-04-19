@@ -22,6 +22,8 @@ import CreateEvent from './components/createEvent';
 import EventProfile from './components/eventProfile';
 import AnimalTypes from './components/animalTypes';
 import EventProfileSpecific from './components/eventProfileSpecific';
+import EditEvent from './components/editEvent.jsx';
+import ResetPassword from './components/resetPassword.jsx';
 
 function App() {
     return (
@@ -82,7 +84,7 @@ function AppRoutes() {
                 } />
                 <Route path="/animalProfile/:animalSpeciesId" element={<AnimalProfile />} />
 
-                <Route path="/animalProfileSpecific/:animalId" element={
+                <Route path="/animalProfileSpecific/:name" element={
                     <ProtectedRoute>
                         <AnimalProfileSpecific />
                     </ProtectedRoute>
@@ -100,6 +102,16 @@ function AppRoutes() {
                 <Route path="/eventProfileSpecific/:eventId" element={
                     <ProtectedRoute>
                         <EventProfileSpecific />
+                    </ProtectedRoute>
+                } />
+                <Route path="/editevent/:eventId" element={
+                    <ProtectedRoute>
+                        <EditTicket />
+                    </ProtectedRoute>
+                } />
+                <Route path="/resetPassword" element={
+                    <ProtectedRoute>
+                        <ResetPassword />
                     </ProtectedRoute>
                 } />
             </Routes>
