@@ -2,9 +2,9 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
 import '../styles/animalProfile.css';
-import Lion from '../assets/lion.jpg';
 import { useParams } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import animalSpeciesName2 from '../assets/lion.jpg';
+import zimba from '../assets/lion.jpg';
 
 const AnimalProfile = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -32,13 +32,23 @@ const AnimalProfile = () => {
 
   const data = useMemo(() => animals, [animals]);
 
+  const getImageForSpecies = (speciesName) => {
+    switch(speciesName) {
+      case 'zimba':
+        return zimba;
+      case 'animalSpeciesName2':
+        return animalSpeciesName2;
+      default:
+        return 'path_to_default_image_if_needed';
+    }
+  };
 
   return (
     <div className="animal-profile-container">
       <div className="animal-card-container">
         {animals.map(animal => (
           <Card key={animal.id} title={animal.name} subTitle={`Type: ${animal.animalSpeciesName} | Habitat: ${animal.enclosureId}`} className="animal-card">
-            <img src={Lion} alt={animal.name} className="animal-image" />
+            <img src={getImageForSpecies(animal.name)} alt={animal.animalSpeciesName} className="animal-image" />
             <div className="p-mb-2">
               <p>{animal.description}</p>
               <Link to={`/animalProfileSpecific/${animal.animalId}`} className="p-button p-button-text">
