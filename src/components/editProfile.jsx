@@ -1,23 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
-import { Menu } from 'primereact/menu';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Message } from 'primereact/message';
-import { useNavigate } from 'react-router-dom';
 import '../styles/editProfile.css'; 
 
 const EditProfile = () => {
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
-    let navigate = useNavigate();
-
-    // const items = [
-    //     { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
-    //     { label: 'Booked Events', icon: 'pi pi-link', url: '/profile/event' },
-    //     { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
-    // ];
 
     const [userDetails, setUserDetails] = useState({
+        userId: '',
         name: '',
         username: '',
         phone: '',
@@ -29,28 +21,52 @@ const EditProfile = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchData = async () => {
-            const loggedUsername = sessionStorage.getItem('loggedUserDetails');
+        const fetchData = async (loggedUserId) => {
             try {
-                const response = await fetch(`${baseUrl}user/${userId}`);
+                const response = await fetch(`http://localhost:8080/api/v1/user/${loggedUserId}`);
                 const data = await response.json();
-                setUserDetails(data);
+                setUserDetails({
+                    userId: data.userId || '',
+                    name: data.name || '',
+                    username: data.username || '',
+                    phone: data.phone || '',
+                    email: data.email || '',
+                    password: data.password || '',
+                });
             } catch (err) {
                 setError(err.message);
             }
         };
-        fetchData();
+
+        const loggedUserId = sessionStorage.getItem('userId');
+        console.log("loggedUserId", loggedUserId)
+        fetchData(loggedUserId);
     }, []);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Implement the logic to submit the form data
+        try {
+            const response = await fetch(`http://localhost:8080/api/v1/user/updatebyuserid/${userDetails.userId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userDetails),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update Admin data');
+            }
+            setUserDetails(userDetails);
+            setError(null)
+        } catch (error) {
+            console.error('Error updating profile:', error);
+            setError('Failed to update');
+        }
         setSubmitted(true);
     };
 
     return (
         <div className="edit-profile-container">
-            {/* <Menu model={items} /> */}
             <div className="edit-profile-form">
                 <Card title="Edit Your Profile" className="edit-profile-card">
                     {error && <Message severity="error" text={`Error: ${error}`} />}
