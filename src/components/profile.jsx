@@ -14,14 +14,12 @@ const Profile = () => {
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
     console.log(baseUrl);
 
-    // Menu items
     const items = [
         { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
         { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },
         { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
     ];
 
-    // State for user details
     const [userDetails, setUserDetails] = useState({
         name: '',
         username: '',
@@ -30,14 +28,12 @@ const Profile = () => {
         password: ''
     });
 
-    // State for error
     const [error, setError] = useState(null);
 
-    // Fetch user data
     useEffect(() => {
-        const fetchData = async (username) => {
+        const fetchData = async (loggedUserId) => {
             try {
-                const response = await fetch(`${baseUrl}user/${username}`);
+                const response = await fetch(`${baseUrl}user/${loggedUserId}`);
                 const data = await response.json();
                 setUserDetails({
                     name: data.name || '',
@@ -51,18 +47,16 @@ const Profile = () => {
             }
         };
 
-        const loggedUsername = sessionStorage.getItem('username');
-        fetchData(loggedUsername);
+        const loggedUserId = sessionStorage.getItem('userId');
+        fetchData(loggedUserId);
     }, []);
 
-    // Handle delete user
     const handleDelete = async (e) => {
         e.preventDefault();
-        deleteUser(userDetails.username);
+        deleteUser(userDetails.userId);
         navigate('/');
     };
 
-    // Navigate to ResetPassword component
     const handleResetPassword = () => {
         navigate('/resetpassword');
     };
@@ -76,7 +70,7 @@ const Profile = () => {
                 <Divider />
                 <Card title={<Avatar image={avatar} label={userDetails.name.charAt(0)}
                                      style={{ width: '100px', height: '100px', fontSize: '50px' }} />}
-                      className="profile-card"> {/* Avatar component */}
+                      className="profile-card">
                     {error && <p className="error-message">Error: {error}</p>}
                     <div className="profile-details">
                         <p><span className="profile-label">Name:</span> {userDetails.name}</p>
