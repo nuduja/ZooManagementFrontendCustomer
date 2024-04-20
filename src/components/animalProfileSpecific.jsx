@@ -8,13 +8,13 @@ import '../styles/animalProfileSpecific.css'; // Import your custom CSS file
 const AnimalProfileSpecific = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const navigate = useNavigate();
-  const { name } = useParams();
+  const { animalId } = useParams();
   const [animalData, setAnimalData] = useState(null);
   
   useEffect(() => {
     const fetchAnimalData = async () => {
       try {
-        const response = await fetch(`${baseUrl}animal/${name}`);
+        const response = await fetch(`${baseUrl}animal/${animalId}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -26,7 +26,7 @@ const AnimalProfileSpecific = () => {
     };
 
     fetchAnimalData();
-  }, [name]);
+  }, [animalId]);
 
   return (
     <div className="animal-profile-specific-container">

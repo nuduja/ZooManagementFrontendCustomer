@@ -84,7 +84,7 @@ function AppRoutes() {
                 } />
                 <Route path="/animalProfile/:animalSpeciesId" element={<AnimalProfile />} />
 
-                <Route path="/animalProfileSpecific/:name" element={
+                <Route path="/animalProfileSpecific/:animalId" element={
                     <ProtectedRoute>
                         <AnimalProfileSpecific />
                     </ProtectedRoute>

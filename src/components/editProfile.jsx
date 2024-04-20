@@ -11,11 +11,11 @@ const EditProfile = () => {
     const baseUrl = import.meta.env.VITE_API_BASE_URL;
     let navigate = useNavigate();
 
-    const items = [
-        { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
-        { label: 'Booked Events', icon: 'pi pi-link', url: '/profile/event' },
-        { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
-    ];
+    // const items = [
+    //     { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
+    //     { label: 'Booked Events', icon: 'pi pi-link', url: '/profile/event' },
+    //     { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
+    // ];
 
     const [userDetails, setUserDetails] = useState({
         name: '',
@@ -32,7 +32,7 @@ const EditProfile = () => {
         const fetchData = async () => {
             const loggedUsername = sessionStorage.getItem('loggedUserDetails');
             try {
-                const response = await fetch(`${baseUrl}user/${loggedUsername}`);
+                const response = await fetch(`${baseUrl}user/${userId}`);
                 const data = await response.json();
                 setUserDetails(data);
             } catch (err) {
@@ -50,7 +50,7 @@ const EditProfile = () => {
 
     return (
         <div className="edit-profile-container">
-            <Menu model={items} />
+            {/* <Menu model={items} /> */}
             <div className="edit-profile-form">
                 <Card title="Edit Your Profile" className="edit-profile-card">
                     {error && <Message severity="error" text={`Error: ${error}`} />}

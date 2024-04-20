@@ -35,16 +35,16 @@ const Profile = () => {
 
     // Fetch user data
     useEffect(() => {
-        const fetchData = async (username) => {
+        const fetchData = async (userId) => {
             try {
-                const response = await fetch(`${baseUrl}user/${username}`);
+                const response = await fetch(`${baseUrl}user/${userId}`);
                 const data = await response.json();
                 setUserDetails({
                     name: data.name || '',
                     username: data.username || '',
                     phone: data.phone || '',
                     email: data.email || '',
-                    password: data.password || ''
+                    // password: data.password || ''
                 });
             } catch (err) {
                 setError(err.message);
@@ -58,7 +58,7 @@ const Profile = () => {
     // Handle delete user
     const handleDelete = async (e) => {
         e.preventDefault();
-        deleteUser(userDetails.username);
+        deleteUser(userDetails.userId);
         navigate('/');
     };
 

@@ -2,7 +2,8 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
 import '../styles/animalTypes.css';
-import Lion from '../assets/lion.jpg';
+import LionImage from '../assets/lion.jpg'; // Import lion image
+import TigerImage from '../assets/tiger.jpg'; // Import tiger image
 
 const AnimalTypes = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -24,7 +25,6 @@ const AnimalTypes = () => {
       console.error('Error fetching Animal Types data:', error);
     }
   };
-  
 
   const data = useMemo(() => animalTypes, [animalTypes]);
 
@@ -37,12 +37,13 @@ const AnimalTypes = () => {
             pathname: `/animalProfile/${animalType.animalSpeciesId}`,
             state: { selectedSpecies: animalType.animalSpeciesId }
           }} key={animalType.id}>
-          
-          <Card className="animal-card">
-            <img src={Lion} alt={animalType.animalSpeciesName} className="animal-image" />
-            <div className="animal-name">{animalType.animalSpeciesName}</div>
-          </Card>
-        </Link>
+            <Card className="animal-card">
+              {/* Conditional rendering of images based on species name */}
+              {animalType.animalSpeciesName === 'Lion' && <img src={LionImage} alt={animalType.animalSpeciesName} className="animal-image" />}
+              {animalType.animalSpeciesName === 'Tiger' && <img src={TigerImage} alt={animalType.animalSpeciesName} className="animal-image" />}
+              <div className="animal-name">{animalType.animalSpeciesName}</div>
+            </Card>
+          </Link>
         ))}
       </div>
     </div>
