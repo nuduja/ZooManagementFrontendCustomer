@@ -4,7 +4,7 @@ import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
-import { Dialog } from 'primereact/dialog'; // <-- Import Dialog
+import { Dialog } from 'primereact/dialog';
 import '../styles/login.css';
 
 const LoginPage = () => {
@@ -13,8 +13,8 @@ const LoginPage = () => {
     password: '',
   });
   const [submitted, setSubmitted] = useState(false);
-  const [showSuccessDialog, setShowSuccessDialog] = useState(false); // <-- State for success dialog
-  const [showErrorDialog, setShowErrorDialog] = useState(false); // <-- State for error dialog
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+  const [showErrorDialog, setShowErrorDialog] = useState(false);
 
   let navigate = useNavigate();
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -37,22 +37,36 @@ const LoginPage = () => {
       const data = await response.json();
 
       if (data) {
+        fetchUserData(username);
         sessionStorage.setItem("loginStatus", "true");
         sessionStorage.setItem("username", username);
-        setShowSuccessDialog(true); // <-- Show success dialog
+        setShowSuccessDialog(true);
         setTimeout(() => {
           navigate('/');
         }, 2000);
       } else {
-        setShowErrorDialog(true); // <-- Show error dialog
+        setShowErrorDialog(true);
       }
 
       setSubmitted(false);
 
     } catch (error) {
       console.error("Login Error: ", error);
-      setShowErrorDialog(true); // <-- Show error dialog
+      setShowErrorDialog(true);
       setSubmitted(true);
+    }
+  };
+
+  const fetchUserData = async (username) => {
+    try {
+      const response = await fetch(`${baseUrl}user/getUserByUsername/${username}`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      sessionStorage.setItem("userId", data.userId);
+    } catch (error) {
+      console.error('Error fetching Admin data:', error);
     }
   };
 
@@ -103,7 +117,6 @@ const LoginPage = () => {
           {submitted && (
             <Message severity="error" text="Invalid username or password. Please try again." />
           )}
-          {/* Success Dialog */}
           <Dialog
             visible={showSuccessDialog}
             onHide={() => setShowSuccessDialog(false)}
@@ -112,7 +125,6 @@ const LoginPage = () => {
           >
             Login successful!
           </Dialog>
-          {/* Error Dialog */}
           <Dialog
             visible={showErrorDialog}
             onHide={() => setShowErrorDialog(false)}
