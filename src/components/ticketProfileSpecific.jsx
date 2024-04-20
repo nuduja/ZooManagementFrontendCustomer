@@ -36,7 +36,7 @@ const TicketProfileSpecific = () => {
       if (!response.ok) {
         throw new Error('Failed to delete ticket');
       }
-      navigate('/');
+      navigate(-1);
     } catch (error) {
       console.error('Error deleting ticket:', error);
     }
