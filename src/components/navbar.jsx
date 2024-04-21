@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { Menubar } from 'primereact/menubar';
 import { Link } from 'react-router-dom';
 import '../styles/navbar.css';
@@ -9,7 +9,7 @@ export default function Navbar() {
   let navigate = useNavigate();
 
   const isLoggedIn = sessionStorage.getItem('loginStatus') === 'true';
-  const logedUser = sessionStorage.getItem('username');
+  const loggedUser = sessionStorage.getItem('username');
   const items = [
     { label: 'Home', icon: 'pi pi-home', url: '/' },
     { label: 'Book Ticket', icon: 'pi pi-ticket', url: '/createticket' },
@@ -19,8 +19,6 @@ export default function Navbar() {
     { label: 'About Us', icon: 'pi pi-info-circle', url: '/about' },
   ];
 
-  
-
   const handleLogout = () => {
     sessionStorage.clear();
     navigate('/');
@@ -28,19 +26,12 @@ export default function Navbar() {
 
   const start = (
     <Link to="/" className="p-menuitem-link">
-      <img
-        alt="logo"
-        src={Logo}
-        height="40"
-        className="mr-2"
-      ></img>
+      <img alt="logo" src={Logo} height="40" className="mr-2" />
     </Link>
   );
-  
 
   const end = (
     <div className="flex align-items-center">
-      
       {!isLoggedIn ? (
         <>
           <Link to="/login" className="p-menuitem-link">
@@ -51,19 +42,16 @@ export default function Navbar() {
             <i className="pi pi-angle-up"></i>
             <span>Sign up</span>
           </Link>
-          
         </>
       ) : (
         <>
-          
           <div onClick={handleLogout} className="p-menuitem-link" style={{ cursor: 'pointer' }}>
             <i className="pi pi-sign-out"></i>
             <span>Log Out</span>
           </div>
           <Link to="/profile" className="p-menuitem-link">
             <i className="pi pi-user"></i>
-            
-            <span>{logedUser}</span>
+            <span>{loggedUser}</span>
           </Link>
         </>
       )}
@@ -71,7 +59,7 @@ export default function Navbar() {
   );
 
   return (
-    <div className="card" style={{ width: '100%', position: '', top: 0, zIndex: 1000, margin: 0 }}>
+    <div className="navbar-container">
       <Menubar model={items} start={start} end={end} />
     </div>
   );

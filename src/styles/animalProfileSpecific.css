@@ -1,4 +1,5 @@
 .animal-profile-specific-container {
+  margin-top: 20px;
   display: flex;
   justify-content: center; /* Horizontally center items */
   margin-bottom: 100px;

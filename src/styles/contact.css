@@ -1,5 +1,6 @@
 .contact-container {
-  max-width: 600px;
+  max-width: 60%; /* Adjust max-width for responsiveness */
+  max-height: 50%;
   margin: auto;
   margin-top: 20px;
   padding: 20px;
@@ -7,8 +8,8 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-image: url('../assets/lion.jpg');
-  background-size: cover; /* Adjusts the background image to cover the entire container */
-  background-position: center; /* Centers the background image */
+  background-size: cover;
+  background-position: center;
 }
 
 .form-group {
@@ -18,26 +19,17 @@
 label {
   display: block;
   margin-bottom: 5px;
+  color: #005a3c;
 }
 
-h1 {
+h1, p {
   color: #000000;
-}
-
-p {
-  color: #000000;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  color: #005a3c; /* Green color for labels */
 }
 
 input[type="text"],
 input[type="email"],
 textarea {
-  width: 100%;
+  width: calc(100% - 22px); /* Adjust width to account for padding and border */
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -46,7 +38,7 @@ textarea {
 }
 
 button {
-  background-color: #005a3c; /* Green button background color */
+  background-color: #005a3c;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -56,5 +48,17 @@ button {
 }
 
 button:hover {
-  background-color: #007e55; /* Darker green color on hover */
+  background-color: #007e55;
+}
+
+@media screen and (max-width: 768px) {
+  .contact-container {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%; /* Make inputs full-width on smaller screens */
+  }
 }
