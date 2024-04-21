@@ -52,8 +52,10 @@ const Profile = () => {
     }, []);
 
     const handleDelete = async (e) => {
+        const loggedUserId = sessionStorage.getItem('userId');
         e.preventDefault();
-        deleteUser(userDetails.userId);
+        deleteUser(loggedUserId);
+        sessionStorage.clear();
         navigate('/');
     };
 
