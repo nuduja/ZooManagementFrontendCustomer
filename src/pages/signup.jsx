@@ -17,11 +17,22 @@ const SignUpPage = () => {
     password: '',
   });
   const [submitted, setSubmitted] = useState(false);
-  const [confPassword, setconfPassword] = useState(false);
+  const [confPassword, setConfPassword] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [showErrorDialog, setShowErrorDialog] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   let navigate = useNavigate();
+
+  const validateEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+
+  const validatePhone = (phone) => {
+    const re = /^\d{10}$/;
+    return re.test(String(phone));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +44,18 @@ const SignUpPage = () => {
     const password = formData.password;
     const role = "USER";
 
+    if (!validateEmail(email)) {
+      setErrorMessage('Invalid email format');
+      setShowErrorDialog(true);
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      setErrorMessage('Invalid phone number');
+      setShowErrorDialog(true);
+      return;
+    }
+
     try {
       if (!confPassword && name && username && phone && email && password) {
         const response = await fetch(`${baseUrl}user/register`, {
@@ -43,17 +66,34 @@ const SignUpPage = () => {
           body: JSON.stringify({ name, username, phone, email, password, role })
         });
 
-        setSubmitted(false);
-        setShowSuccessDialog(true);
-        setTimeout(() => {
-          navigate('/login');
-        }, 2000);
+        if (!response.ok) {
+          setShowErrorDialog(true);
+          throw new Error('Signup failed.')
+        };
+
+        if (response.ok) {
+          setSubmitted(false);
+          setShowSuccessDialog(true);
+          setTimeout(() => {
+            setShowSuccessDialog(false);
+            setSubmitted(false);
+            navigate('/login');
+          }, 5000);
+        } else{
+          setShowErrorDialog(true);
+          setSubmitted(true);
+          throw new Error(result.message || 'Unknown error');
+        }
+
+
       } else {
         setShowErrorDialog(true);
+
       }
     } catch (error) {
       console.error("Signup Error: ", error);
       setShowErrorDialog(true);
+      setErrorMessage('Failed to create Customer. Please try again.');
       setSubmitted(true);
     }
   };
@@ -74,6 +114,7 @@ const SignUpPage = () => {
     <div className="login-container p-grid p-justify-center">
       <div className="p-col-12 p-md-6">
         <Card title="Sign-Up" className="login-card p-shadow-3 card">
+          {errorMessage && <Message severity="error" text={errorMessage} />}
           <form onSubmit={handleSubmit} className="p-fluid">
             <div className="p-field">
               <label htmlFor="name">Name</label>
@@ -127,7 +168,7 @@ const SignUpPage = () => {
               <InputText
                 id="confirmPassword"
                 type="password"
-                onChange={(e) => {(e.target.value === formData.password) ? setconfPassword(false) : setconfPassword(true)}}
+                onChange={(e) => {(e.target.value === formData.password) ? setConfPassword(false) : setConfPassword(true)}}
                 className="p-inputtext-lg"
               />
             </div>
@@ -160,6 +201,7 @@ const SignUpPage = () => {
             footer={errorFooter}
           >
             Registration unsuccessful. Please check your details.
+            <p>{errorMessage}</p>
           </Dialog>
         </Card>
       </div>

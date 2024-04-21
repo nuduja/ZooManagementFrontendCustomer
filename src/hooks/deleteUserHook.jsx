@@ -1,5 +1,5 @@
-export function deleteUser(username) {
-    const url = `http://localhost:8080/user/${username}`;
+export function deleteUser(loggedUserId) {
+    const url = `http://localhost:8080/api/v1/user/${loggedUserId}`;
   
     fetch(url, {
       method: 'DELETE',
