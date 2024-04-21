@@ -25,6 +25,7 @@ const EditProfile = () => {
     const [emailError, setEmailError] = useState('');
     const [showErrorDialog, setShowErrorDialog] = useState(false);
     const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         const fetchData = async (loggedUserId) => {
@@ -68,22 +69,43 @@ const EditProfile = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:8080/api/v1/user/updatebyuserid/${userDetails.userId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(userDetails),
-            });
-            if (!response.ok) {
-                throw new Error('Failed to update profile');
+            if (!confPassword && name && username && phone && email && password) {
+                const response = await fetch(`http://localhost:8080/api/v1/user/updatebyuserid/${userDetails.userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userDetails),
+                });
+                if (!response.ok) {
+                    setShowErrorDialog(true);
+                    throw new Error('Failed to update profile');
+                }
+
+                if (response.ok) {
+                    setSubmitted(false);
+                    setError(null);
+                    setShowSuccessDialog(true);
+                    setTimeout(() => {
+                        setShowSuccessDialog(false);
+                        setSubmitted(false);
+                        navigate('/login');
+                    }, 5000);
+                } else{
+                    setShowErrorDialog(true);
+                    setSubmitted(true);
+                    setError(true);
+                    throw new Error(result.message || 'Unknown error');
+                }
+
+            } else {
+                setShowErrorDialog(true);
+                setError(true)
+
             }
-            setError(null);
-            setSubmitted(true);
-            setShowSuccessDialog(true);
         } catch (error) {
             console.error('Error updating profile:', error);
-            setError('Failed to update profile');
+            setErrorMessage('Failed to Update Customer. Please try again.');
             setShowErrorDialog(true);
         }
     };
@@ -96,7 +118,7 @@ const EditProfile = () => {
         <div className="edit-profile-container">
             <div className="edit-profile-form">
                 <Card title="Edit Your Profile" className="edit-profile-card">
-                    {error && <Message severity="error" text={`Error: ${error}`} />}
+                    {errorMessage && <Message severity="error" text={`Error: ${errorMessage}`} />}
                     <form className="p-fluid" onSubmit={handleSubmit}>
                         <div className="p-field">
                             <label htmlFor="name">Name</label>
@@ -166,7 +188,7 @@ const EditProfile = () => {
                 className="p-dialog-sm"
                 footer={<Button label="OK" onClick={navigateBack} />}
             >
-                <p>Profile updated successfully!</p>
+                <p>{errorMessage}</p>
             </Dialog>
         </div>
     );
