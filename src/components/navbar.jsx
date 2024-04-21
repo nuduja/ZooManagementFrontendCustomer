@@ -9,7 +9,7 @@ export default function Navbar() {
   let navigate = useNavigate();
 
   const isLoggedIn = sessionStorage.getItem('loginStatus') === 'true';
-  const logedUser = sessionStorage.getItem('username');
+  const loggedUser = sessionStorage.getItem('username');
   const items = [
     { label: 'Home', icon: 'pi pi-home', url: '/' },
     { label: 'Book Ticket', icon: 'pi pi-ticket', url: '/createticket' },
@@ -22,7 +22,7 @@ export default function Navbar() {
   
 
   const handleLogout = () => {
-    sessionStorage.clear();
+    sessionStorage.clear();1
     navigate('/');
   };
 
@@ -63,7 +63,7 @@ export default function Navbar() {
           <Link to="/profile" className="p-menuitem-link">
             <i className="pi pi-user"></i>
             
-            <span>{logedUser}</span>
+            <span>{loggedUser}</span>
           </Link>
         </>
       )}
