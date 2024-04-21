@@ -9,7 +9,7 @@ export default function Navbar() {
   let navigate = useNavigate();
 
   const isLoggedIn = sessionStorage.getItem('loginStatus') === 'true';
-  const logggedUser = sessionStorage.getItem('username');
+  const loggedUser = sessionStorage.getItem('username');
   const items = [
     { label: 'Home', icon: 'pi pi-home', url: '/' },
     { label: 'Book Ticket', icon: 'pi pi-ticket', url: '/createticket' },
