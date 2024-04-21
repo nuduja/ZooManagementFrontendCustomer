@@ -5,12 +5,16 @@
     /* height: 100%; */
     margin-bottom: 100px;
   }
-  .section-title1 {
-    font-size: 24px; /* You can adjust the font size as needed */
-    color: #333; /* You can choose any color you like */
-    margin-bottom: 20px; /* Adds some margin at the bottom for spacing */
-    /* Add any other desired styles here */
-  }
+  /* animalProfileSpecific.css */
+
+.section-title1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: 150px;
+  color: #333; /* Example color */
+  font-weight: bold; /* Example font weight */
+}
+
   
   .animal-section {
     max-width: 400px;

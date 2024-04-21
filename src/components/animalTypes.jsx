@@ -2,7 +2,11 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
 import '../styles/animalTypes.css';
-import animalSpeciesName2 from '../assets/lion.jpg';
+import Tiger from '../assets/Animal Types/tiger.jpg';
+import Elephant from '../assets/Animal Types/Elephant.jpg';
+import Lion from '../assets/Animal Types/lion1.jpg';
+import Cheetah from '../assets/Animal Types/cheetah.jpg';
+import Giraffe from '../assets/Animal Types/giraffe.jpg';
 import animalSpeciesName1 from '../assets/lion.jpg';
 
 const AnimalTypes = () => {
@@ -30,10 +34,16 @@ const AnimalTypes = () => {
 
   const getImageForSpecies = (speciesName) => {
     switch(speciesName) {
-      case 'animalSpeciesName1':
-        return animalSpeciesName1;
-      case 'animalSpeciesName2':
-        return animalSpeciesName2;
+      case 'Tiger':
+        return Tiger;
+      case 'Elephant':
+        return Elephant;
+        case 'Cheetah':
+        return Cheetah;
+        case 'Lion':
+        return Lion;
+        case 'Giraffe':
+        return Giraffe;
       default:
         return 'path_to_default_image_if_needed';
     }

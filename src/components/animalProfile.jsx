@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import '../styles/animalProfile.css';
 import { useParams } from 'react-router-dom';
 import animalSpeciesName2 from '../assets/lion.jpg';
-import zimba from '../assets/lion.jpg';
+import Dave from '../assets/Animal Types/tiger.jpg';
+import Leo from '../assets/Animal Profile/leo.jpg';
+import Rajah from '../assets/Animal Profile/rajah.jpg';
 
 const AnimalProfile = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -34,10 +36,12 @@ const AnimalProfile = () => {
 
   const getImageForSpecies = (speciesName) => {
     switch(speciesName) {
-      case 'zimba':
-        return zimba;
-      case 'animalSpeciesName2':
-        return animalSpeciesName2;
+      case 'Dave':
+        return Dave;
+      case 'Leo':
+        return Leo;
+        case 'Rajah':
+        return Rajah;
       default:
         return 'path_to_default_image_if_needed';
     }
@@ -50,7 +54,7 @@ const AnimalProfile = () => {
           <Card key={animal.id} title={animal.name} subTitle={`Type: ${animal.animalSpeciesName} | Habitat: ${animal.enclosureId}`} className="animal-card">
             <img src={getImageForSpecies(animal.name)} alt={animal.animalSpeciesName} className="animal-image" />
             <div className="p-mb-2">
-              <p>{animal.description}</p>
+              {/* <p>{animal.description}</p> */}
               <Link to={`/animalProfileSpecific/${animal.animalId}`} className="p-button p-button-text">
                 View Details
               </Link>
