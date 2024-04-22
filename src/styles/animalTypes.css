@@ -1,33 +1,35 @@
 .animal-types-container {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px; /* Add padding for better spacing */
 }
 
-
-.section-title{
+.section-title {
   color: rgb(13, 88, 6);
-	margin: auto;
-	letter-spacing: 0.0015em;
-	font-size: 4em;
-	text-shadow: 0 1px #1c339b, -1px 0 #09c5d3, -1px 2px #8da1ff, -2px 1px #c0cbff,
-		-2px 3px #8da1ff, -3px 2px #c0cbff, -3px 4px #8da1ff, -4px 3px #c0cbff,
-		-4px 5px #8da1ff, -5px 4px #c0cbff, -5px 6px #8da1ff, -6px 5px #c0cbff,
-		-6px 7px #8da1ff, -7px 6px #c0cbff, -7px 8px #8da1ff, -8px 7px #c0cbff;
-	text-align: center;
+  margin: 20px auto; /* Add margin for better spacing */
+  letter-spacing: 0.0015em;
+  font-size: 3em; /* Decrease font size for better fit on smaller screens */
+  text-shadow: 0 1px #1c339b, -1px 0 #09c5d3, -1px 2px #8da1ff, -2px 1px #c0cbff,
+    -2px 3px #8da1ff, -3px 2px #c0cbff, -3px 4px #8da1ff, -4px 3px #c0cbff,
+    -4px 5px #8da1ff, -5px 4px #c0cbff, -5px 6px #8da1ff, -6px 5px #c0cbff,
+    -6px 7px #8da1ff, -7px 6px #c0cbff, -7px 8px #8da1ff, -8px 7px #c0cbff;
+  text-align: center;
 }
-
 
 .animal-card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 -10px; /* Add negative margin to offset the margin from .animal-card */
 }
 
 .animal-card {
   position: relative;
-  width: 400px;
-  margin: 40px;
+  width: 90%; /* Adjust width to take up 90% of the container */
+  max-width: 400px; /* Add maximum width to prevent the card from stretching too wide */
+  margin: 20px; /* Add margin for spacing between cards */
   text-align: center;
 }
 
@@ -42,20 +44,23 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 15px 20px; /* Increased padding for better spacing */
-  background-color: rgba(240, 240, 240, 0.9); /* Slightly transparent background */
-  border-radius: 12px 12px 0 0; /* Increased border-radius for a more rounded look */
-  font-size: 22px; /* Increased font size for better readability */
-  font-weight: bold; /* Added bold font weight */
-  color: #333; /* Darker text color for better contrast */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle text shadow for depth */
-  transition: opacity 0.3s, transform 0.3s; /* Added transition for transform */
-  transform: translateY(100%); /* Initial position hidden below the card */
+  padding: 15px 20px;
+  background-color: rgba(240, 240, 240, 0.9);
+  border-radius: 12px 12px 0 0;
+  font-size: 18px; /* Decrease font size for better fit on smaller screens */
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(100%);
 }
 
 .animal-card:hover .animal-name {
   display: block;
   opacity: 1;
-  transform: translateY(0); /* Move the name up to its visible position */
+  transform: translateY(0);
 }
 
+.paginator {
+  margin-top: 20px; /* Add margin for spacing between cards and paginator */
+}

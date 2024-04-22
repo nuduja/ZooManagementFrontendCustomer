@@ -41,7 +41,7 @@ function CreateTicket() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validation
+    
     if (!ticketType || !price || !username || !ticketDate) {
       setErrorMessage('Please fill out all fields.');
       setShowErrorDialog(true);

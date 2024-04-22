@@ -3,7 +3,7 @@ import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
 import '../styles/animalProfile.css';
 import { useParams } from 'react-router-dom';
-import { Paginator } from 'primereact/paginator'; // Import Paginator
+import { Paginator } from 'primereact/paginator'; 
 import animalSpeciesName2 from '../assets/lion.jpg';
 import Dave from '../assets/Animal Types/tiger.jpg';
 import Leo from '../assets/Animal Profile/leo.jpg';
@@ -13,11 +13,12 @@ const AnimalProfile = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const { animalSpeciesId } = useParams();
   const [animals, setAnimals] = useState([]);
-  const [first, setFirst] = useState(0); // Current first item index
-  const [rows, setRows] = useState(5); // Number of items per page
+  const [first, setFirst] = useState(0); 
+  const [rows, setRows] = useState(5); 
 
   useEffect(() => {
     fetchData();
+    window.scrollTo(0, 0);
   }, []);
 
   const fetchData = async () => {
@@ -67,7 +68,7 @@ const AnimalProfile = () => {
           <Card key={animal.id} title={animal.name} subTitle={`Type: ${animal.animalSpeciesName} | Habitat: ${animal.enclosureId}`} className="animal-card">
             <img src={getImageForSpecies(animal.name)} alt={animal.animalSpeciesName} className="animal-image" />
             <div className="p-mb-2">
-              {/* <p>{animal.description}</p> */}
+              
               <Link to={`/animalProfileSpecific/${animal.animalId}`} className="p-button p-button-text">
                 View Details
               </Link>

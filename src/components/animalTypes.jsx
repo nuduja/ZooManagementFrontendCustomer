@@ -1,19 +1,21 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Card } from 'primereact/card';
 import { Link } from 'react-router-dom';
-import { Paginator } from 'primereact/paginator'; // Import Paginator
+import { Paginator } from 'primereact/paginator'; 
 import '../styles/animalTypes.css';
 import Tiger from '../assets/Animal Types/tiger.jpg';
 import Elephant from '../assets/Animal Types/Elephant.jpg';
 import Lion from '../assets/Animal Types/lion1.jpg';
 import Cheetah from '../assets/Animal Types/cheetah.jpg';
 import Giraffe from '../assets/Animal Types/giraffe.jpg';
+import Gorilla from '../assets/Animal Types/gorilla.jpg';
+import Kangaroo from '../assets/Animal Types/kangaroo.avif';
 
 const AnimalTypes = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [animalTypes, setAnimalTypes] = useState([]);
-  const [first, setFirst] = useState(0); // Current first item index
-  const [rows, setRows] = useState(5); // Number of items per page
+  const [first, setFirst] = useState(0); 
+  const [rows, setRows] = useState(5); 
 
   useEffect(() => {
     fetchData();
@@ -46,6 +48,10 @@ const AnimalTypes = () => {
         return Lion;
       case 'Giraffe':
         return Giraffe;
+        case 'Gorilla':
+        return Gorilla;
+        case 'Kangaroo':
+        return Kangaroo;
       default:
         return 'path_to_default_image_if_needed';
     }

@@ -1,24 +1,29 @@
 .about-container {
   max-width: 800px;
-  margin: 0 auto;
+  margin-top: 80px; /* Increased margin to accommodate the navbar */
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 20px;
-  background-color: #f8f8f8; /* Set background color */
-  border-radius: 10px; /* Add border radius for rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .team-container {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Adjust alignment as needed */
+  justify-content: space-between;
 }
 
 .team-member {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
-  width: calc(33.33% - 20px); /* 3 members per row */
+  width: calc(33.33% - 20px);
 }
 
 .member-info {
@@ -37,6 +42,20 @@
   margin-top: 40px;
   text-align: center;
 }
-.p-card p{
+
+.p-card p {
   color: black;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1024px) {
+  .team-member {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .team-member {
+    width: calc(100% - 20px);
+  }
 }

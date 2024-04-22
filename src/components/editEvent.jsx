@@ -5,7 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
 import { Dialog } from 'primereact/dialog';
-// import '../styles/editEvent.css';
+
 
 const EditEvent = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -83,7 +83,7 @@ const EditEvent = () => {
   const onHideDialog = () => {
     setShowSuccessDialog(false);
     setShowErrorDialog(false);
-    // navigate(`/editevent/${eventId}`);
+    navigate(`/editevent/${eventId}`);
   };
 
   return (

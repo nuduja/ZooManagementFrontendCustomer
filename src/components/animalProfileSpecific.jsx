@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Lion from '../assets/lion.jpg';
 import Dave from '../assets/Animal Types/tiger.jpg';
 import Leo from '../assets/Animal Profile/leo.jpg';
-import '../styles/animalProfileSpecific.css'; // Import your custom CSS file
+import '../styles/animalProfileSpecific.css'; 
 
 const AnimalProfileSpecific = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -49,9 +49,7 @@ const AnimalProfileSpecific = () => {
           <h3 className="section-title1">Animal Details</h3>
           <Card className="animal-card">
             <div>
-              {/* <p>ID: {animalData.id}</p>
-              <p>Animal ID: {animalData.animalId}</p>
-              <p>Animal Species ID: {animalData.animalSpeciesId}</p> */}
+              
               <img src={getImageForSpecies(animalData.name)} alt={animalData.animalSpeciesName} className="animal-image" />
               <p>Animal Species Name: {animalData.animalSpeciesName}</p>
               <p>Animal Name: {animalData.name}</p>              
