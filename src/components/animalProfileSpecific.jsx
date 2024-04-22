@@ -5,7 +5,18 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Lion from '../assets/lion.jpg';
 import Dave from '../assets/Animal Types/tiger.jpg';
 import Leo from '../assets/Animal Profile/leo.jpg';
+import Raja from '../assets/Animal Profile/rajah.jpg';
+import Maya from '../assets/Animal Profile/maya.jpg';
+import Raju from '../assets/Animal Profile/raju.jpg';
+import Kavi from '../assets/Animal Profile/kavi.jpg';
+import Zimba from '../assets/Animal Profile/zimba.jpg';
+import Nala from '../assets/Animal Profile/nala.jpg';
+import Scar from '../assets/Animal Profile/scar.jpg';
+import Kali from '../assets/Animal Profile/kali.jpg';
+import Luna from '../assets/Animal Profile/luna.webp';
+import Zephyr from '../assets/Animal Profile/Zephyr.jpg';
 import '../styles/animalProfileSpecific.css'; 
+import Default from '../assets/Animal Profile/default.jpg';
 
 const AnimalProfileSpecific = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -15,6 +26,7 @@ const AnimalProfileSpecific = () => {
   
   useEffect(() => {
     const fetchAnimalData = async () => {
+      window.scrollTo(0, 0);
       try {
         const response = await fetch(`${baseUrl}animal/${animalId}`);
         if (!response.ok) {
@@ -29,6 +41,12 @@ const AnimalProfileSpecific = () => {
 
     fetchAnimalData();
   }, [animalId]);
+  const handleGoBack = () => {
+    
+    navigate(-1);
+    window.scrollTo(0, 0);
+     // Navigate back one page
+  };
   const getImageForSpecies = (speciesName) => {
     switch(speciesName) {
       case 'Dave':
@@ -37,13 +55,35 @@ const AnimalProfileSpecific = () => {
         return Leo;
         case 'Rajah':
         return Rajah;
+        
+      case 'Raju':
+        return Raju;
+      case 'Maya':
+        return Maya;
+      case 'Kavi':
+        return Kavi;
+      case 'Zimba':
+        return Zimba;
+      case 'Nala':
+        return Nala;
+        case 'Scar':
+          return Scar;
+          case 'Kali':
+            return Kali;
+            case 'Luna':
+          return Luna;
+          case 'Zephyr':
+          return Zephyr;
       default:
-        return 'path_to_default_image_if_needed';
+        return Default;
     }
+    
   };
 
   return (
     <div className="animal-profile-specific-container">
+      <Button label="Back" className="back-button p-button-secondary p-mb-2" onClick={handleGoBack} />
+
       {animalData ? (
         <div className="animal-section">
           <h3 className="section-title1">Animal Details</h3>

@@ -2,6 +2,7 @@
 
 /* Main container */
 .main-container {
+  margin: auto;
   display: flex;
   justify-content: space-between;
   margin: 20px;
@@ -46,10 +47,11 @@
   color: #333; /* Dark gray */
 }
 
-/* Profile buttons */
+
 .profile-buttons {
-  width: 200px;
-  margin-top: 20px;
+  display: flex;
+  margin: 20px auto;
+    
 }
 
 /* Zoo-themed button styles */
