@@ -52,7 +52,7 @@ const EditProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Validate phone
+        
         if (!/^\d{10}$/.test(userDetails.phone)) {
             setPhoneError('Phone number must be 10 digits');
             return;
@@ -60,7 +60,7 @@ const EditProfile = () => {
             setPhoneError('');
         }
 
-        // Validate email
+        
         if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(userDetails.email)) {
             setEmailError('Invalid email address');
             return;

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Navigate, useParams } from 'react-router-dom';
-import '../styles/editTicket.css'; // Import your custom CSS file
-import { Menu } from 'primereact/menu'; // Import Menu component
-import { Dropdown } from 'primereact/dropdown'; // Import Dropdown component
-import { Calendar } from 'primereact/calendar'; // Import Calendar component
-import { Dialog } from 'primereact/dialog'; // Import Dialog component
+import '../styles/editTicket.css'; 
+import { Menu } from 'primereact/menu'; 
+import { Dropdown } from 'primereact/dropdown'; 
+import { Calendar } from 'primereact/calendar'; 
+import { Dialog } from 'primereact/dialog'; 
 import { useNavigate } from 'react-router-dom';
 
 const EditProfile = () => {

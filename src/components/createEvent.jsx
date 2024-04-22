@@ -131,7 +131,7 @@ function CreateEvent() {
         </div>
         <button type="submit">Book Event</button>
 
-        {/* Dialog */}
+        
         <Dialog
           visible={displayDialog}
           onHide={() => setDisplayDialog(false)}

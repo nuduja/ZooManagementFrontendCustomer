@@ -46,7 +46,7 @@ const EventProfile = () => {
     };
     
 
-    // Menu items
+    
     const items = [
         { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
         { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },

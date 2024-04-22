@@ -4,7 +4,7 @@ import { Card } from 'primereact/card';
 import { Panel } from 'primereact/panel';
 import { Carousel } from 'primereact/carousel';
 import { classNames } from 'primereact/utils';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom'; 
 import '../styles/home.css';
 import Video1 from '../assets/video1.mp4';
 import Rainforest from '../assets/rainforest.jpg';
@@ -20,6 +20,8 @@ import Tiger from '../assets/Animal Types/tiger.jpg';
 import Elephant from '../assets/Animal Types/Elephant.jpg';
 import Cheetah from '../assets/Animal Types/cheetah.jpg';
 import Giraffe from '../assets/Animal Types/giraffe.jpg';
+import Gorilla from '../assets/Animal Types/gorilla.jpg';
+import Kangaroo from '../assets/Animal Types/kangaroo.avif';
 
 const Home = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -59,6 +61,10 @@ const Home = () => {
         return Lion;
       case 'Giraffe':
         return Giraffe;
+        case 'Gorilla':
+        return Gorilla;
+        case 'Kangaroo':
+        return Kangaroo;
       default:
         return 'path_to_default_image_if_needed';
     }
@@ -190,18 +196,10 @@ const Home = () => {
         <div className={classNames('button-section', 'animated-button')}>
           <div className="p-grid p-justify-center">
             <div className="p-col-6">
-              <Button
-                label="See All Exhibits"
-                icon="pi pi-eye"
-                className="p-button-raised p-button-rounded p-button-text p-button-lg p-mb-2"
-              />
+              
             </div>
             <div className="p-col-6">
-              <Button
-                label="View Event Calendar"
-                icon="pi pi-calendar"
-                className="p-button-raised p-button-rounded p-button-text p-button-lg p-mb-2"
-              />
+              
             </div>
           </div>
         </div>

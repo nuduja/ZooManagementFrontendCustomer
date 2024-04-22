@@ -12,7 +12,7 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // Basic validation
+    
     const formData = new FormData(form.current);
     const name = formData.get('user_name');
     const email = formData.get('user_email');

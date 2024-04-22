@@ -11,7 +11,7 @@ const About = () => {
     { name: 'Nuduja Mapa', position: 'Zoo Director', avatar: 'https://th.bing.com/th/id/OIP.Rd4WaPYswPlDC33LVNLpsgHaHa?rs=1&pid=ImgDetMain' },
     { name: 'Senura Wickmal', position: 'Wildlife Biologist', avatar: 'https://media.licdn.com/dms/image/D5603AQF4_PnCvr6cqg/profile-displayphoto-shrink_200_200/0/1710331023099?e=2147483647&v=beta&t=G1P0ShHHzT2ZS8E271lNyCUzvLAleRfMgTfVv5jCOsY' },
     { name: 'Chameesha Ravindu', position: 'Animal Caretaker', avatar: 'https://media.licdn.com/dms/image/D4E03AQHlSobLq-ZaOA/profile-displayphoto-shrink_200_200/0/1696862494421?e=2147483647&v=beta&t=ufoyrEO2ie9SER99MbNMnVQXw_sz_VIgG4LaPZsqif8' },
-    // Add more team members as needed
+    
   ];
 
   return (
@@ -41,9 +41,7 @@ const About = () => {
           </div>
         ))}
       </div>
-      {/* <div className="button-container">
-        <Button label="Learn More" icon="pi pi-info-circle" className="p-button-raised p-button-rounded p-button-info" />
-      </div> */}
+      
     </div>
   );
 };

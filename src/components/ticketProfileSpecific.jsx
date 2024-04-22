@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Menu } from 'primereact/menu'; // Import Menu component
-import '../styles/ticketProfileSpecific.css'; // Import your custom CSS file
+import { Menu } from 'primereact/menu'; 
+import '../styles/ticketProfileSpecific.css'; 
 
 const TicketProfileSpecific = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
