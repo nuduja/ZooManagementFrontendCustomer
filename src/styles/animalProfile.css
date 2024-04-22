@@ -45,3 +45,14 @@
 .animal-card p {
   color: #333;
 }
+.paginator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Add some space between the cards and the paginator */
+}
+
+.paginator {
+  margin-bottom: 20px; /* Add some margin at the bottom of the paginator */
+}
+

@@ -68,7 +68,6 @@ const AnimalProfile = () => {
           <Card key={animal.id} title={animal.name} subTitle={`Type: ${animal.animalSpeciesName} | Habitat: ${animal.enclosureId}`} className="animal-card">
             <img src={getImageForSpecies(animal.name)} alt={animal.animalSpeciesName} className="animal-image" />
             <div className="p-mb-2">
-              
               <Link to={`/animalProfileSpecific/${animal.animalId}`} className="p-button p-button-text">
                 View Details
               </Link>
@@ -76,15 +75,18 @@ const AnimalProfile = () => {
           </Card>
         ))}
       </div>
-      <Paginator
-        first={first}
-        rows={rows}
-        totalRecords={totalRecords}
-        onPageChange={onPageChange}
-        className="paginator"
-      />
+      <div className="paginator-container">
+        <Paginator
+          first={first}
+          rows={rows}
+          totalRecords={totalRecords}
+          onPageChange={onPageChange}
+          className="paginator"
+        />
+      </div>
     </div>
   );
+  
 };
 
 export default AnimalProfile;
