@@ -11,6 +11,7 @@ const TicketProfile = () => {
 
   useEffect(() => {
     fetchData();
+    window.scrollTo(0, 0);
   }, []);
 
   const fetchData = async () => {
@@ -62,6 +63,7 @@ const TicketProfile = () => {
           <Card key={ticket.id} title={ticket.ticketType} subTitle={`Price: ${ticket.price} | Date: ${ticket.ticketDate} `} className="ticket-card">
             <div className="p-mb-2">
               <Link to={`/ticket/${ticket.ticketID}`} className="p-button p-button-text">
+              
                 View Details
               </Link>
             </div>
