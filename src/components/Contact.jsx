@@ -23,17 +23,25 @@ const Contact = () => {
     }
 
     emailjs
-        .sendForm('service_ee8vgtm', 'template_4rw6m8r', form.current, {
-          publicKey: 'zXAlVVivBD7BlgIVm',
-        })
+        .sendForm(
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+            form.current,
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
         .then(
             () => {
               console.log('SUCCESS!');
+              form.current.reset();
+              setErrorMessage('');
+
             },
             (error) => {
               console.log('FAILED...', error.text);
             },
         );
+
+
   };
 
   return (
@@ -43,15 +51,15 @@ const Contact = () => {
       <form ref={form} onSubmit={sendEmail}>
         <div className="p-field">
           <label htmlFor="name">Name</label>
-          <input type="text" name="user_name" required />
+          <InputText type="text" name="user_name" required />
         </div>
         <div className="p-field">
           <label htmlFor="email">Email</label>
-          <input type="email" name="user_email" required />
+          <InputText type="email" name="user_email" required />
         </div>
         <div className="p-field">
           <label htmlFor="message">Message</label>
-          <textarea name="message" required />
+          <InputTextarea name="message" required />
         </div>
         <Button type="submit" label="Send Message" />
         {errorMessage && <Message severity="error" text={errorMessage} />}
