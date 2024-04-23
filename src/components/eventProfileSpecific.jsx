@@ -62,14 +62,14 @@ const EventProfileSpecific = () => {
             <p>ID: {eventData.id}</p> 
             <p>Event Name: {eventData.eventName}</p>
             <p>Event ID: {eventData.eventID}</p> 
-            <p>Price: ${eventData.price}</p>
+            {/* <p>Price: ${eventData.price}</p> */}
             <p>Date: {eventData.eventDate}</p>
             <p>Capacity: {eventData.capacity}</p>
             <p>Location: {eventData.eventLocation}</p>
           </div>
           <div className="button-group">
             <Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editevent/${eventData.eventID}`)} /> {/* Updated to edit event */}
-            <Button label="Delete" className="p-button-raised p-button-danger" onClick={handleDelete} />
+            {/* <Button label="Delete" className="p-button-raised p-button-danger" onClick={handleDelete} /> */}
             </div>
          </Card>
        ) : (

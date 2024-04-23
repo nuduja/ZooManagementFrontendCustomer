@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
-import '../styles/createevent.css';
 import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown'; // Import Dropdown component
+import '../styles/createevent.css';
 
 function CreateEvent() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -26,6 +27,21 @@ function CreateEvent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation checks
+    if (!eventName || !eventDescription || !eventLocation || !capacity || !eventDate) {
+      setErrorMessage('Please fill in all fields.');
+      setDisplayDialog(true);
+      return;
+    }
+
+    const parsedCapacity = parseInt(capacity);
+    if (isNaN(parsedCapacity) || parsedCapacity <= 0) {
+      setErrorMessage('Capacity should be a positive number.');
+      setDisplayDialog(true);
+      return;
+    }
+
     try {
       const response = await fetch(`${baseUrl}event`, {
         method: 'POST',
@@ -37,7 +53,7 @@ function CreateEvent() {
           eventDescription,
           eventDate: eventDate.toISOString(),
           eventLocation,
-          capacity: parseInt(capacity),
+          capacity: parsedCapacity,
           username,
         }),
       });
@@ -66,20 +82,30 @@ function CreateEvent() {
     </div>
   );
 
+  // Define location options with park names
+  const locationOptions = [
+    { label: 'Safari Zone', value: 'Safari Zone' },
+    { label: 'Aquatic Pavilion', value: 'Aquatic Pavilion' },
+    { label: 'Bird Aviary', value: 'Bird Aviary' },
+    { label: 'Primate Enclosure', value: 'Primate Enclosure' },
+    { label: 'Central Park', value: 'Central Park' },
+    { label: 'Golden Gate Park', value: 'Golden Gate Park' },
+    { label: 'Hyde Park', value: 'Hyde Park' },
+  ];
+
   return (
     <div className="container">
       <img className="background-image" src="https://shorturl.at/oqFS2" alt="Background" />
       <h2>Book Online</h2>
-      {errorMessage && <p>{errorMessage}</p>}
       <form className="form-container" onSubmit={handleSubmit}>
         <label>
-          Username:
+          {/* Username: */}
           <input
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
-            disabled
+            hidden={true}
           />
         </label>
         <label>
@@ -109,15 +135,17 @@ function CreateEvent() {
             required
           />
         </label>
-        <label>
-          Event Location:
-          <input
-            type="text"
+        <div>
+          {/* Dropdown for Event Location */}
+          <label>Event Location:</label>
+          <Dropdown
             value={eventLocation}
-            onChange={(e) => setEventLocation(e.target.value)}
+            options={locationOptions}
+            onChange={(e) => setEventLocation(e.value)}
+            placeholder="Select Location"
             required
           />
-        </label>
+        </div>
         <div className="calendar-container">
           <label>
             Select Date:
@@ -131,7 +159,6 @@ function CreateEvent() {
         </div>
         <button type="submit">Book Event</button>
 
-        
         <Dialog
           visible={displayDialog}
           onHide={() => setDisplayDialog(false)}
