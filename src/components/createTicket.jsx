@@ -1,16 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
+import emailjs from '@emailjs/browser';
 import '../styles/createticket.css';
 
 function CreateTicket() {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const form = useRef();
   const [ticketType, setTicketType] = useState('');
   const [price, setPrice] = useState('');
   const [username, setUsername] = useState('');
+  const [loggedUserEmail, setLoggedUserEmail] = useState('');
   const [ticketDate, setTicketDate] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
@@ -19,8 +22,10 @@ function CreateTicket() {
   useEffect(() => {
     window.scrollTo(0, 0);
     const storedUsername = sessionStorage.getItem('username');
+    const storedEmail = sessionStorage.getItem('loggedUserEmail');
     if (storedUsername) {
       setUsername(storedUsername);
+      setLoggedUserEmail(storedEmail);
     }
   }, []);
 
@@ -38,16 +43,32 @@ function CreateTicket() {
     setPrice(selectedTicket.price);
   };
 
+  const sendEmail = () => {
+    emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID_2,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    ).then(
+        () => {
+          console.log('Email sent successfully!');
+        },
+        (error) => {
+          console.error('Failed to send email:', error.text);
+        }
+    );
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    
+
+
     if (!ticketType || !price || !username || !ticketDate) {
       setErrorMessage('Please fill out all fields.');
       setShowErrorDialog(true);
       return;
     }
-  
+
     try {
       const response = await fetch(`${baseUrl}ticket`, {
         method: 'POST',
@@ -70,6 +91,7 @@ function CreateTicket() {
       setUsername('');
       setTicketDate('');
       setErrorMessage('');
+      sendEmail();
     } catch (error) {
       console.error('Error creating ticket:', error);
       setErrorMessage('Failed to create ticket. Please try again.');
@@ -96,10 +118,11 @@ function CreateTicket() {
         <div className="create-ticket-container">
           <h2 className='h2'>Book Online</h2>
           {errorMessage && <Message severity="error" text={errorMessage} />}
-          <form onSubmit={handleSubmit}>
+          <form ref={form} onSubmit={handleSubmit}>
             <div className="input-container">
               <label className='t'>Ticket Type:</label>
               <Dropdown
+                name="ticketType"
                 value={ticketType}
                 options={ticketTypes}
                 onChange={handleTicketTypeChange}
@@ -111,26 +134,41 @@ function CreateTicket() {
             <div className="input-container">
               <label className='t'>Price:</label>
               <input
+                name="price"
                 type="text"
                 value={price}
-                disabled
+                readOnly={true}
                 className="zoo-input"
               />
             </div>
             <div className="input-container">
-              <label className='t'>Username:</label>
+              {/*<label className='t'>Username:</label>*/}
               <input
                 type="text"
+                name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                disabled
                 className="zoo-input"
                 required
+                hidden={true}
+              />
+            </div>
+            <div className="input-container">
+              {/*<label className='t'>Email:</label>*/}
+              <input
+                type="text"
+                name="email"
+                value={loggedUserEmail}
+                onChange={(e) => setLoggedUserEmail(e.target.value)}
+                className="zoo-input"
+                required
+                hidden={true}
               />
             </div>
             <div className="input-container">
               <label className='t'>Ticket Date:</label>
               <Calendar
+                name="ticketDate"
                 value={ticketDate}
                 onChange={(e) => setTicketDate(e.value)}
                 dateFormat="yy-mm-dd"
