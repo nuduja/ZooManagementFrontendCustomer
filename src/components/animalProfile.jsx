@@ -10,7 +10,7 @@ import { Paginator } from 'primereact/paginator';
 import animalSpeciesName2 from '../assets/lion.jpg';
 import Dave from '../assets/Animal Types/tiger.jpg';
 import Leo from '../assets/Animal Profile/leo.jpg';
-import Loo from '../assets/Animal Profile/.jpg';
+// import Loo from '../assets/Animal Profile/.jpg';
 import Maya from '../assets/Animal Profile/maya.jpg';
 import Raju from '../assets/Animal Profile/raju.jpg';
 import Kavi from '../assets/Animal Profile/kavi.jpg';
