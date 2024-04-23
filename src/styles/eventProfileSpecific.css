@@ -6,9 +6,9 @@
 }
 
 .left-sidebar {
-  margin-top: 50px;
-  flex: 0 0 20%; 
-}
+  margin-top: 100px;
+  display: flex;
+  }
 
 .event-card {
   width: 300px;

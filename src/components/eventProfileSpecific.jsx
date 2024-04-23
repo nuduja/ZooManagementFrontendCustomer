@@ -37,7 +37,7 @@ const EventProfileSpecific = () => {
       if (!response.ok) {
         throw new Error('Failed to delete event');
       }
-      navigate('/');
+      navigate(-1);
     } catch (error) {
       console.error('Error deleting event:', error);
     }

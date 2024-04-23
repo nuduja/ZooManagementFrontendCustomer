@@ -5,7 +5,8 @@ import { InputText } from 'primereact/inputtext';
 import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
 import { Dialog } from 'primereact/dialog';
-
+import { Menu } from 'primereact/menu';
+import '../styles/editEvent.css';
 
 const EditEvent = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -14,7 +15,6 @@ const EditEvent = () => {
   const [eventData, setEventData] = useState(null);
   const [editedEventData, setEditedEventData] = useState({
     eventName: '',
-    price: '',
     eventDate: '',
     capacity: '',
     eventLocation: '',
@@ -33,7 +33,6 @@ const EditEvent = () => {
         setEventData(data);
         setEditedEventData({
           eventName: data.eventName,
-          price: data.price.toString(),
           eventDate: new Date(data.eventDate),
           capacity: data.capacity.toString(),
           eventLocation: data.eventLocation,
@@ -45,7 +44,7 @@ const EditEvent = () => {
     };
 
     fetchEventData();
-  }, [eventId]);
+  }, [baseUrl, eventId]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -63,7 +62,7 @@ const EditEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${baseUrl}event/${eventId}`, {
+      const response = await fetch(`${baseUrl}event/updatebyeventid/${eventId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -83,80 +82,82 @@ const EditEvent = () => {
   const onHideDialog = () => {
     setShowSuccessDialog(false);
     setShowErrorDialog(false);
-    navigate(`/editevent/${eventId}`);
+    navigate(-1);
   };
 
+  const items = [
+    { label: 'Profile', icon: 'pi pi-palette', url: '/profile' },
+    { label: 'Booked Events', icon: 'pi pi-link', url: '/eventprofile' },
+    { label: 'Booked Tickets', icon: 'pi pi-home', url: '/ticketprofile' }
+  ];
+
   return (
-    <div className="edit-event-container">
-      <h2>Edit Event</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="p-field">
-          <label htmlFor="eventName">Event Name:</label>
-          <InputText
-            id="eventName"
-            name="eventName"
-            value={editedEventData.eventName}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="p-field">
-          <label htmlFor="price">Price:</label>
-          <InputText
-            id="price"
-            name="price"
-            value={editedEventData.price}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="p-field">
-          <label htmlFor="eventDate">Event Date:</label>
-          <Calendar
-            id="eventDate"
-            name="eventDate"
-            value={new Date(editedEventData.eventDate)}
-            onChange={handleDateChange}
-            dateFormat="yy-mm-dd"
-            showIcon
-          />
-        </div>
-        <div className="p-field">
-          <label htmlFor="capacity">Capacity:</label>
-          <InputText
-            id="capacity"
-            name="capacity"
-            value={editedEventData.capacity}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="p-field">
-          <label htmlFor="eventLocation">Location:</label>
-          <InputText
-            id="eventLocation"
-            name="eventLocation"
-            value={editedEventData.eventLocation}
-            onChange={handleInputChange}
-          />
-        </div>
-        <Button type="submit" label="Update" className="p-button-raised p-button-success" />
-      </form>
+    <div>
+      <div className="left-sidebar">
+        <Menu model={items} />
+      </div>
+      <div className="edit-event-container">
+        <h2>Edit Event</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="p-field">
+            <label htmlFor="eventName">Event Name:</label>
+            <InputText
+              id="eventName"
+              name="eventName"
+              value={editedEventData.eventName}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="p-field">
+            <label htmlFor="eventDate">Event Date:</label>
+            <Calendar
+              id="eventDate"
+              name="eventDate"
+              value={new Date(editedEventData.eventDate)}
+              onChange={handleDateChange}
+              dateFormat="yy-mm-dd"
+              showIcon
+            />
+          </div>
+          <div className="p-field">
+            <label htmlFor="capacity">Capacity:</label>
+            <InputText
+              id="capacity"
+              name="capacity"
+              value={editedEventData.capacity}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="p-field">
+            <label htmlFor="eventLocation">Location:</label>
+            <InputText
+              id="eventLocation"
+              name="eventLocation"
+              value={editedEventData.eventLocation}
+              onChange={handleInputChange}
+            />
+          </div>
+          <Button type="submit" label="Update" className="p-button-raised p-button-success" />
+        </form>
 
-      <Dialog
-        visible={showSuccessDialog}
-        onHide={onHideDialog}
-        header="Success"
-        footer={<Button label="OK" onClick={onHideDialog} />}
-      >
-        <p>Event data updated successfully!</p>
-      </Dialog>
+        <Dialog
+          visible={showSuccessDialog}
+          onHide={onHideDialog}
+          header="Success"
+          footer={<Button label="OK" onClick={onHideDialog} />}
+        >
+          <p>Event data updated successfully!</p>
+        </Dialog>
 
-      <Dialog
-        visible={showErrorDialog}
-        onHide={onHideDialog}
-        header="Error"
-        footer={<Button label="OK" onClick={onHideDialog} />}
-      >
-        <p>Failed to update event data</p>
-      </Dialog>
+        <Dialog
+          visible={showErrorDialog}
+          onHide={onHideDialog}
+          header="Error"
+          footer={<Button label="OK" onClick={onHideDialog} />}
+        >
+          <p>Failed to update event data</p>
+        </Dialog>
+      </div>
     </div>
   );
 };
