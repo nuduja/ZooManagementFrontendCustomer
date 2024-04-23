@@ -74,6 +74,11 @@ function AppRoutes() {
                         <EditTicket />
                     </ProtectedRoute>
                 } />
+                <Route path="/editevent/:eventId" element={
+                    <ProtectedRoute>
+                        <EditEvent />
+                    </ProtectedRoute>
+                } />
                 <Route path="/createTicket" element={
                     <ProtectedRoute>
                         <CreateTicket />

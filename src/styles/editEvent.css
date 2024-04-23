@@ -1,0 +1,29 @@
+/* editEvent.css */
+.edit-event-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100px;
+  }
+  
+  .edit-event-container h2 {
+    color: #004d40; /* Dark green color */
+    margin-bottom: 20px;
+  }
+  
+  .edit-event-container form {
+    width: 300px;
+  }
+  
+  .edit-event-container .p-field {
+    margin-bottom: 20px;
+  }
+  
+  .edit-event-container .p-inputtext {
+    width: 100%;
+  }
+  
+  .edit-event-container .p-button {
+    width: 100%;
+  }
+  

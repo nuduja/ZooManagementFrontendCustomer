@@ -67,7 +67,7 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/ticket/updatebyticketid/${ticketId}`, {
+      const response = await fetch(`${baseUrl}ticket/updatebyticketid/${ticketId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
