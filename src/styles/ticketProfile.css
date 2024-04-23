@@ -7,7 +7,9 @@
 .ticket-section {
   width: 48%; 
 }
-
+.left-sidebar{
+  margin-top: 50px;
+}
 .section-title {
   color: #004d40; 
   margin-bottom: 1rem; 
