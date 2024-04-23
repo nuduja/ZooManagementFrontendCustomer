@@ -65,6 +65,7 @@ const LoginPage = () => {
       }
       const data = await response.json();
       sessionStorage.setItem("userId", data.userId);
+      sessionStorage.setItem("loggedUserEmail", data.email);
     } catch (error) {
       console.error('Error fetching Admin data:', error);
     }
