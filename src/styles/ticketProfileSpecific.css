@@ -18,15 +18,16 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .info{
+  
 
   font-size: large;
   
 }
 p{
-  text-shadow: -1px -1px 0 #fffdfd,  
-                1px -1px 0 #ffffff,
-               -1px 1px 0 #ffffff,
-                1px 1px 0 #ffffff; /* Add stroke effect */
+  text-shadow: -1px -1px 0 #000000,  
+                1px -1px 0 #000000,
+               -1px 1px 0 #000000,
+                1px 1px 0 #000000; /* Add stroke effect */
 }
 
 .button-group {
