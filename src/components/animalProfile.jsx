@@ -10,7 +10,7 @@ import { Paginator } from 'primereact/paginator';
 import animalSpeciesName2 from '../assets/lion.jpg';
 import Dave from '../assets/Animal Types/tiger.jpg';
 import Leo from '../assets/Animal Profile/leo.jpg';
-import Raja from '../assets/Animal Profile/rajah.jpg';
+// import Loo from '../assets/Animal Profile/.jpg';
 import Maya from '../assets/Animal Profile/maya.jpg';
 import Raju from '../assets/Animal Profile/raju.jpg';
 import Kavi from '../assets/Animal Profile/kavi.jpg';
@@ -21,6 +21,17 @@ import Kali from '../assets/Animal Profile/kali.jpg';
 import Luna from '../assets/Animal Profile/luna.webp';
 import Zephyr from '../assets/Animal Profile/Zephyr.jpg';
 import Default from '../assets/Animal Profile/default.jpg';
+import Laila from '../assets/Animal Profile/Laila.jpg';
+import Jaya from '../assets/Animal Profile/Jaya.jpg';
+import Bala from '../assets/Animal Profile/Bala.jpg';
+import Ruby from '../assets/Animal Profile/Ruby.jpeg';
+import Willow from '../assets/Animal Profile/Willow.jpg';
+import Jasper from '../assets/Animal Profile/Jasper.jpg';
+import Amber from '../assets/Animal Profile/Amber.jpg';
+import Savannah from '../assets/Animal Profile/Savannah.jpg';
+import Akili from '../assets/Animal Profile/Akili.jpg';
+import Amara from '../assets/Animal Profile/Amara.jpg';
+
 const AnimalProfile = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const { animalSpeciesId } = useParams();
@@ -59,8 +70,8 @@ const AnimalProfile = () => {
         return Dave;
       case 'Leo':
         return Leo;
-      case 'Rajah':
-        return Rajah;
+      case 'Loo':
+        return Loo;
       case 'Raju':
         return Raju;
       case 'Maya':
@@ -79,6 +90,26 @@ const AnimalProfile = () => {
           return Luna;
           case 'Zephyr':
           return Zephyr;
+          case 'Laila':
+          return Laila;
+          case 'Jaya':
+            return Jaya;
+            case 'Bala':
+              return Bala;
+            case 'Ruby':
+              return Ruby;
+            case 'Willow':
+              return Willow;
+            case 'Jasper':
+              return Jasper;
+            case 'Amber':
+              return Amber;
+            case 'Savannah':
+              return Savannah;
+            case 'Akili':
+              return Akili;
+            case 'Amara':
+              return Amara;
 
 
       default:

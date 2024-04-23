@@ -68,7 +68,7 @@ const TicketProfileSpecific = () => {
           </div>
           <div className="button-group">
             <Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />
-            <Button label="Delete" className="p-button-raised p-button-danger" onClick={() => handleDelete(ticketData.id)} />
+            {/* <Button label="Delete" className="p-button-raised p-button-danger" onClick={() => handleDelete(ticketData.id)} /> */}
           </div>
         </Card>
       ) : (

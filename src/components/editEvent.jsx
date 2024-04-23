@@ -61,6 +61,19 @@ const EditEvent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation checks
+    if (!editedEventData.eventName || !editedEventData.eventDate || !editedEventData.capacity || !editedEventData.eventLocation) {
+      setShowErrorDialog(true);
+      return;
+    }
+
+    const capacity = parseInt(editedEventData.capacity);
+    if (isNaN(capacity) || capacity <= 0) {
+      setShowErrorDialog(true);
+      return;
+    }
+
     try {
       const response = await fetch(`${baseUrl}event/updatebyeventid/${eventId}`, {
         method: 'PUT',
