@@ -22,6 +22,7 @@ const AnimalTypes = () => {
   }, []);
 
   const fetchData = async () => {
+    
     try {
       const response = await fetch(`${baseUrl}animalspecies`);
       if (!response.ok) {

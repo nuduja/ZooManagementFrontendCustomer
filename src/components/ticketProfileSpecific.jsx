@@ -12,6 +12,7 @@ const TicketProfileSpecific = () => {
   const [ticketData, setTicketData] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchTicketData = async () => {
       try {
         const response = await fetch(`${baseUrl}ticket/${ticketId}`);

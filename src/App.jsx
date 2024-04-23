@@ -24,6 +24,7 @@ import AnimalTypes from './components/animalTypes';
 import EventProfileSpecific from './components/eventProfileSpecific';
 import EditEvent from './components/editEvent.jsx';
 import ResetPassword from './components/resetPassword.jsx';
+import QRScanner from './components/QrScanner.jsx';
 
 function App() {
     return (
@@ -67,9 +68,15 @@ function AppRoutes() {
                 } />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/QrScanner" element={<QRScanner />} />
                 <Route path="/editticket/:ticketId" element={
                     <ProtectedRoute>
                         <EditTicket />
+                    </ProtectedRoute>
+                } />
+                <Route path="/editevent/:eventId" element={
+                    <ProtectedRoute>
+                        <EditEvent />
                     </ProtectedRoute>
                 } />
                 <Route path="/createTicket" element={

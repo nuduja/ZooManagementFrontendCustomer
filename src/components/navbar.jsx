@@ -17,6 +17,8 @@ export default function Navbar() {
     { label: 'Animals', icon: 'pi pi-paw', url: '/animalTypes' },
     { label: 'Contact', icon: 'pi pi-envelope', url: '/contact' },
     { label: 'About Us', icon: 'pi pi-info-circle', url: '/about' },
+    { label: 'QR Scanner', icon: 'pi pi-info-circle', url: '/QrScanner' },
+
   ];
 
   const handleLogout = () => {

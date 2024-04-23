@@ -37,7 +37,7 @@ const EventProfileSpecific = () => {
       if (!response.ok) {
         throw new Error('Failed to delete event');
       }
-      navigate('/');
+      navigate(-1);
     } catch (error) {
       console.error('Error deleting event:', error);
     }
@@ -51,7 +51,9 @@ const EventProfileSpecific = () => {
 
   return (
     <div>
+      <div className="left-sidebar">
         <Menu model={items} />
+        </div>
     <div className="event-profile-specific-container"> 
 
       {eventData ? (

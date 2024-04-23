@@ -1,12 +1,15 @@
 .about-container {
-  max-width: 800px;
-  margin-top: 80px; /* Increased margin to accommodate the navbar */
-  display: flex;
+  max-width: 60%; /* Adjust max-width for responsiveness */
+  max-height: 50%;
   margin: auto;
+  margin-top: 120px;
+  padding: 20px; /* Increased margin to accommodate the navbar */
+  display: flex;
+  /* margin: auto; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  /* padding: 20px; */
   background-color: #f8f8f8;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
