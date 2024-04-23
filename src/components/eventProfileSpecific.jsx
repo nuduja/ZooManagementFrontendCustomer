@@ -51,7 +51,9 @@ const EventProfileSpecific = () => {
 
   return (
     <div>
+      <div className="left-sidebar">
         <Menu model={items} />
+        </div>
     <div className="event-profile-specific-container"> 
 
       {eventData ? (
