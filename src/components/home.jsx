@@ -214,7 +214,7 @@ const Home = () => {
           <ul className="visitor-info-list">
             <li>Opening Hours: 9:00 AM - 6:00 PM</li>
             <li>Location: 123 Zoo Street, City, Country</li>
-            <li>Contact: +1 (123) 456-7890</li>
+            <li>Contact: +94 765456213</li>
           </ul>
           <Button
             label="Book Now"

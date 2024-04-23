@@ -17,6 +17,17 @@ import Luna from '../assets/Animal Profile/luna.webp';
 import Zephyr from '../assets/Animal Profile/Zephyr.jpg';
 import '../styles/animalProfileSpecific.css'; 
 import Default from '../assets/Animal Profile/default.jpg';
+import Laila from '../assets/Animal Profile/Laila.jpg';
+import Jaya from '../assets/Animal Profile/Jaya.jpg';
+import Bala from '../assets/Animal Profile/Bala.jpg';
+import Ruby from '../assets/Animal Profile/Ruby.jpeg';
+import Willow from '../assets/Animal Profile/Willow.jpg';
+import Jasper from '../assets/Animal Profile/Jasper.jpg';
+import Amber from '../assets/Animal Profile/Amber.jpg';
+import Savannah from '../assets/Animal Profile/Savannah.jpg';
+import Akili from '../assets/Animal Profile/Akili.jpg';
+import Amara from '../assets/Animal Profile/Amara.jpg';
+
 
 const AnimalProfileSpecific = () => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -74,6 +85,27 @@ const AnimalProfileSpecific = () => {
           return Luna;
           case 'Zephyr':
           return Zephyr;
+          case 'Laila':
+          return Laila;
+          case 'Jaya':
+            return Jaya;
+            case 'Bala':
+              return Bala;
+            case 'Ruby':
+              return Ruby;
+            case 'Willow':
+              return Willow;
+            case 'Jasper':
+              return Jasper;
+            case 'Amber':
+              return Amber;
+            case 'Savannah':
+              return Savannah;
+            case 'Akili':
+              return Akili;
+            case 'Amara':
+              return Amara;
+
       default:
         return Default;
     }
